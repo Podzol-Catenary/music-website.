@@ -4,12 +4,12 @@ p{
 font-size:12px
 }
 
-container {
+.container {
   width: 100%;
   display: flex;
 }
 
-container img {
+.container img {
   width:33.3%; 
   height:auto;
 }
