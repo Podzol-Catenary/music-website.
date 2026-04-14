@@ -1,21 +1,21 @@
 @charset "utf-8";
 
-
-   .px {
-    font-size: 12px
-   }
+px {
+font-size: 12px
+}
    
-  .FlexContainer {
-   display: flex;
-  }
-  .FlexContainer>span {
-   border:solid thin #FFF;
-  }
+FlexContainer {
+display: flex;
+}
 
-  .phrase {
-    display: inline-block;
-  }
+FlexContainer>span {
+border:solid thin #FFF;
+}
 
-  span.site {
-   display: inline-block;
-  }
+phrase {
+display: inline-block;
+}
+
+span.site {
+display: inline-block;
+}
