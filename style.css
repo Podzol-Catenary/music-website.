@@ -22,6 +22,10 @@ font-size:12px
   display: block;
 }
 
+a {
+  color: black;
+}
+
 .FlexContainer {
 display:flex;
 }
