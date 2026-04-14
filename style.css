@@ -1,11 +1,15 @@
 @charset "utf-8";
 
 p{
-font-size: 12px
+font-size:12px
 }
-   
+
+p2{
+font-size:9px
+}
+
 .FlexContainer {
-display: flex;
+display:flex;
 }
 
 .FlexContainer>span {
@@ -13,9 +17,9 @@ border:solid thin #FFF;
 }
 
 .phrase {
-display: inline-block;
+display:inline-block;
 }
 
 span.site {
-display: inline-block;
+display:inline-block;
 }
