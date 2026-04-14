@@ -26,6 +26,17 @@ a {
   color: black;
 }
 
+.box {
+  display: flex;
+  align-items: center; /* 縦位置を中央揃え */
+  gap: 20px; /* 画像と文字の間隔 */
+}
+
+.box img {
+  width: 60%;  /* 画像サイズ */
+  height: auto;
+}
+
 .FlexContainer {
 display:flex;
 }
