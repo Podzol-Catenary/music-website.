@@ -28,13 +28,20 @@ a {
 
 .box {
   display: flex;
-  align-items: center; /* 縦位置を中央揃え */
-  gap: 20px; /* 画像と文字の間隔 */
+  align-items: center;
+  gap: 20px;
 }
 
 .box img {
-  width: 60%;  /* 画像サイズ */
+  width: 60%;
   height: auto;
+}
+
+@media (max-width: 600px) {
+  .box {
+    flex-direction: column; /* 縦並び */
+    text-align: center;
+  }
 }
 
 .FlexContainer {
