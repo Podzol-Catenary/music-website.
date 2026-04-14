@@ -15,12 +15,11 @@
 <header>
 <h1 id="logo"><a href="index.html"><img src="logo.png" alt="podzol-catenary" height="50"></a></h1>
 </header>
-
-<img src="mainimg.jpg" alt="" height="500">
+<img src="mainimg.jpg" style="width: 100%; height: auto;">
 <h2>Podzol Catenary</h2>
 <p> 
 プロフィール: <br>
-10歳よりクラシックギターを習う。高校時代にジャズに <br>
+幼少期よりクラシックギターを習う。高校時代にジャズに <br>
 出会い、大学進学をきっかけに移り住んだ北海道にて作曲<br>
 理論を学ぶ。 趣味は街並み写真の撮影。広島県呉市在住。<br>
 ----------------------------------------------------<br>
@@ -33,12 +32,28 @@
 
 <section>
 
-  <img src="fukuyama.jpg" alt="" height="100">
-  <img src="hakodate.jpg" alt="" height="100">
-  <img src="toujou2.jpg" alt="" height="100">　<br>
-  <img src="comitia155.jpg" alt="" height="100">
-  <img src="tadanoumi.jpg" alt="" height="100">
-  <img src="hakodate2.jpg" alt="" height="100">
+<style>
+.container {
+  width: 100%;
+  display: flex;
+}
+
+.container img {
+  flex: 1;
+  height: auto;
+  display: block;
+}
+</style>
+
+<div class="container">
+ <img src="fukuyama.jpg">
+  <img src="hakodate.jpg">
+  <img src="toujou2.jpg">
+  <img src="comitia155.jpg">
+  <img src="tadanoumi.jpg">
+  <img src="hakodate2.jpg">
+</div>  
+
  </a>
 
 </section>
