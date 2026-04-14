@@ -4,15 +4,15 @@ p{
 font-size: 12px
 }
    
-FlexContainer {
+.FlexContainer {
 display: flex;
 }
 
-FlexContainer>span {
+.FlexContainer>span {
 border:solid thin #FFF;
 }
 
-phrase {
+.phrase {
 display: inline-block;
 }
 
