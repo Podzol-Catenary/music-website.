@@ -4,16 +4,16 @@ p{
 font-size:12px
 }
 
-.container {
+container {
   width: 100%;
   display: flex;
 }
 
-.container img {
-  flex: 1;
-  height: auto;
-  display: block;
+container img {
+  width:33.3%; 
+  height:auto;
 }
+
 .FlexContainer {
 display:flex;
 }
