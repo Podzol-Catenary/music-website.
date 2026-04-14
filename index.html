@@ -150,8 +150,20 @@ Nikon FM2 + Ai Nikkor 20mm, Fujifilm X-T2</p>
    Author : Podzol / 長井遥之 / いわさきそのた / enden<br>
    </p>
  </div>
-</div>
 
+<script>
+let currentAudio = null;
+
+function playSound(src) {
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+    }
+
+    currentAudio = new Audio(src);
+    currentAudio.play();
+}
+</script>
 
 </section>
 
