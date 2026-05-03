@@ -42,6 +42,21 @@ a:active {
   font-weight: bold;
 }
 
+.site-link {
+  position: relative;
+  max-width: 1000px;
+}
+
+.site-link a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.site-link img {
+  width: 100%;
+
 @media (max-width: 600px) {
   .box {
     flex-direction: column; /* 縦並び */
