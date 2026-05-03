@@ -1,36 +1,10 @@
 
-@media screen and (min-width: 480px) {
-	/* スマホ */
-	h3{
-		font-size: 2rem; 
-	}
-	p {
-		font-size: 1.0rem;
-	}
-}
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-	/* タブレット */
-	h3{
-		font-size: 2.5rem;
-	}
-	p {
-		font-size: 1.3rem;
-	}
-}
-@media screen and (min-width: 1024px) {
-	/* PC */
-	h3{
-		font-size: 3rem;
-	}
-	p {
-		font-size: 0.8rem;
-	}
-}
 
 @charset "utf-8";
 
 .text {
   font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-size: 10pix;
 }
 
 .container {
@@ -68,6 +42,34 @@ a:active {
 .first-line {
   font-size: 24px;
   font-weight: bold;
+}
+
+@media screen and (min-width: 480px) {
+	/* スマホ */
+	h3{
+		font-size: 2rem; 
+	}
+	p {
+		font-size: 1.2rem;
+	}
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+	/* タブレット */
+	h3{
+		font-size: 2.5rem;
+	}
+	p {
+		font-size: 1.3rem;
+	}
+}
+@media screen and (min-width: 1024px) {
+	/* PC */
+	h3{
+		font-size: 3rem;
+	}
+	p {
+		font-size: 1.4rem;
+	}
 }
 
 @media (max-width: 600px) {
