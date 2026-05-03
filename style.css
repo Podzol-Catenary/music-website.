@@ -1,10 +1,8 @@
-
-
 @charset "utf-8";
 
 .text {
   font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-  font-size: 10pix;
+  font-size: 10px;
 }
 
 .container {
