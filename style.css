@@ -5,6 +5,10 @@
   font-size: 5px;
 }
 
+.p {
+  font-size: 5px;
+}
+
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 横3列 */
