@@ -8,20 +8,40 @@
 <style>
 body {
     margin: 0;
-    padding: 20px;
+    padding: 40px 0;
     font-family: sans-serif;
+    background: #f5f5f5;
 }
 
-/* 全体コンテナ */
+/* ページタイトル */
+.page-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+    margin-bottom: 40px;
+}
+
+/* ギャラリー全体 */
+.gallery-wrapper {
+    width: 80%;          /* 左右10%ずつ余白 */
+    margin: 0 auto;      /* 中央寄せ */
+}
+
+/* 画像グリッド */
 .gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    gap: 20px;
 }
 
 /* 各画像ブロック */
 .item {
     text-align: center;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 /* 画像 */
@@ -32,16 +52,26 @@ body {
     border-radius: 8px;
 }
 
-/* 文字 */
+/* 説明文 */
 .caption {
-    margin-top: 8px;
+    margin-top: 10px;
     font-size: 14px;
+    color: #333;
 }
 
-/* スマホ表示 */
+/* スマホ対応 */
 @media screen and (max-width: 768px) {
+
+    .gallery-wrapper {
+        width: 90%;
+    }
+
     .gallery {
         grid-template-columns: 1fr;
+    }
+
+    .page-title {
+        font-size: 28px;
     }
 }
 </style>
@@ -49,46 +79,52 @@ body {
 
 <body>
 
-<div class="gallery">
+<h1 class="page-title">ページタイトル</h1>
 
-    <div class="item">
-        <img src="image1.jpg" alt="">
-        <div class="caption">説明文1</div>
-    </div>
+<div class="gallery-wrapper">
 
-    <div class="item">
-        <img src="image2.jpg" alt="">
-        <div class="caption">説明文2</div>
-    </div>
+    <div class="gallery">
 
-    <div class="item">
-        <img src="image3.jpg" alt="">
-        <div class="caption">説明文3</div>
-    </div>
+        <div class="item">
+            <img src="image1.jpg" alt="">
+            <div class="caption">説明文1</div>
+        </div>
 
-    <div class="item">
-        <img src="image4.jpg" alt="">
-        <div class="caption">説明文4</div>
-    </div>
+        <div class="item">
+            <img src="image2.jpg" alt="">
+            <div class="caption">説明文2</div>
+        </div>
 
-    <div class="item">
-        <img src="image5.jpg" alt="">
-        <div class="caption">説明文5</div>
-    </div>
+        <div class="item">
+            <img src="image3.jpg" alt="">
+            <div class="caption">説明文3</div>
+        </div>
 
-    <div class="item">
-        <img src="image6.jpg" alt="">
-        <div class="caption">説明文6</div>
-    </div>
+        <div class="item">
+            <img src="image4.jpg" alt="">
+            <div class="caption">説明文4</div>
+        </div>
 
-    <div class="item">
-        <img src="image7.jpg" alt="">
-        <div class="caption">説明文7</div>
-    </div>
+        <div class="item">
+            <img src="image5.jpg" alt="">
+            <div class="caption">説明文5</div>
+        </div>
 
-    <div class="item">
-        <img src="image8.jpg" alt="">
-        <div class="caption">説明文8</div>
+        <div class="item">
+            <img src="image6.jpg" alt="">
+            <div class="caption">説明文6</div>
+        </div>
+
+        <div class="item">
+            <img src="image7.jpg" alt="">
+            <div class="caption">説明文7</div>
+        </div>
+
+        <div class="item">
+            <img src="image8.jpg" alt="">
+            <div class="caption">説明文8</div>
+        </div>
+
     </div>
 
 </div>
