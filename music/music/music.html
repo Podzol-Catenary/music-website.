@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>画像ギャラリー</title>
 
+<style>
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+/* 全体コンテナ */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+/* 各画像ブロック */
+.item {
+    text-align: center;
+}
+
+/* 画像 */
+.item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* 文字 */
+.caption {
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+/* スマホ表示 */
+@media screen and (max-width: 768px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="gallery">
+
+    <div class="item">
+        <img src="image1.jpg" alt="">
+        <div class="caption">説明文1</div>
+    </div>
+
+    <div class="item">
+        <img src="image2.jpg" alt="">
+        <div class="caption">説明文2</div>
+    </div>
+
+    <div class="item">
+        <img src="image3.jpg" alt="">
+        <div class="caption">説明文3</div>
+    </div>
+
+    <div class="item">
+        <img src="image4.jpg" alt="">
+        <div class="caption">説明文4</div>
+    </div>
+
+    <div class="item">
+        <img src="image5.jpg" alt="">
+        <div class="caption">説明文5</div>
+    </div>
+
+    <div class="item">
+        <img src="image6.jpg" alt="">
+        <div class="caption">説明文6</div>
+    </div>
+
+    <div class="item">
+        <img src="image7.jpg" alt="">
+        <div class="caption">説明文7</div>
+    </div>
+
+    <div class="item">
+        <img src="image8.jpg" alt="">
+        <div class="caption">説明文8</div>
+    </div>
+
+</div>
+
+</body>
+</html>
