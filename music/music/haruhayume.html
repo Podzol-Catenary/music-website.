@@ -56,6 +56,30 @@ body{
     margin:0 0 15px 0;
 }
 
+/* ボタン */
+.link-button{
+    display:inline-block;
+
+    background:#888888;
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px 28px;
+    border-radius:6px;
+
+    font-size:14px;
+
+    transition:0.3s;
+
+    margin-bottom:25px;
+}
+
+/* ホバー時 */
+.link-button:hover{
+    background:#666666;
+}
+
 /* 横線 */
 .line{
     border:none;
@@ -94,19 +118,31 @@ body{
 
 <body>
 
+<header>
+<h1 id="logo"><a href="index.html"><img src="logo.png" alt="podzol-catenary" height="50"></a></h1>
+</header>
+<img src="mainimg.jpg" style="width:70%; height: auto;">
+
+<h1 class="page-title">春は夢のように</h1>
+
+
 <div class="content">
 
     <!-- 左側画像 -->
     <div class="image-area">
-        <img src="sample.jpg" alt="サンプル画像">
+        <img src="../../nudja/jacket/haruhayume.jpg" alt="ジャケット画像">
     </div>
 
     <!-- 右側説明 -->
     <div class="text-area">
 
-        <h1 class="title">
-            画像タイトル
-        </h1>
+        <h1 class="title">春は夢のように</h1>
+        <h2 class="description">CD/CD&Booklet</h2>
+        <h2 class="description">2026.4.26</h2>
+     <!-- ボタン -->
+        <a href="https://thenudjaconspiracy.bandcamp.com/album/--3" class="link-button">
+            Bandcamp
+        </a>
 
         <hr class="line">
 
