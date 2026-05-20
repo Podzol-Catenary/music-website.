@@ -1,1 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>アルバム紹介ページ</title>
+
+<style>
+body{
+    margin:0;
+    padding:40px;
+
+    font-family:
+        "Yu Gothic",
+        "Hiragino Sans",
+        sans-serif;
+    background:#f5f5f5;
+}
+
+/* 全体レイアウト */
+.content{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+
+    width:100%;
+    margin:0 auto;
+}
+
+/* 左右を同じ幅にする */
+.image-area,
+.text-area{
+    width:50%;
+}
+
+/* 左側画像エリア */
+.image-area{
+    display:flex;
+    justify-content:center; /* 横方向中央 */
+    transform: translateX(-10px); /* ← 100px左にずらす */
+}
+
+/* 正方形画像 */
+.image-area img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    border-radius:10px;
+    display:block;
+}
+
+/* 画像中央表示 */
+.class1 {
+  text-align: center;
+}
+
+/* タイトル */
+.title{
+    font-size:32px;
+    font-weight:200;
+    color:#222;
+
+    margin:0 0 15px 0;
+}
+
+/* ボタン */
+.link-button{
+    display:inline-block;
+
+    background:#888888;
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px 28px;
+    border-radius:6px;
+
+    font-size:16px;
+
+    transition:0.3s;
+
+    margin-bottom:25px;
+}
+
+/* ホバー時 */
+.link-button:hover{
+    background:#666666;
+}
+
+/* 横線 */
+.line{
+    border:none;
+    border-top:1px solid #cccccc;
+
+    margin-bottom:25px;
+}
+
+/* 説明文 */
+.description{
+    font-size:16px;
+    font-weight:200;
+    color:#444;
+}
+
+/* スマホ対応 */
+@media screen and (max-width:768px){
+
+    .content{
+        flex-direction:column;
+        width:90%;
+        gap:30px;
+    }
+
+    .image-area,
+    .text-area{
+        width:100%;
+    }
+
+    .title{
+        font-size:26px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1 id="logo"><a href="https://podzol-catenary.github.io/music-website./index.html">
+ <div class="class1">
+ <img src="https://podzol-catenary.github.io/music-website./logo.png" alt="podzol-catenary" height="75"></a></h1>
+ </div>
+</header>
+
+<div class="content">
+
+<!-- 左側画像 -->
+<div class="image-area">
+<a href="https://thenudjaconspiracy.bandcamp.com/album/--3">
+<img src="../../music/nudja/jacket/sasameyuki.jpg" alt="ジャケット画像">
+</a>
+</div>
+
+<!-- 右側説明 -->
+<div class="text-area">
+<h1 class="title">The Nudja Conspiracy</h1>
+<h1 class="title">笹目雪の予感</h1>
+<h1 class="description">2025.10</h1>
+
+
+<!-- ボタン -->
+<a href="https://thenudjaconspiracy.bandcamp.com/album/feeling-of-winter" class="link-button">
+▶︎BANDCAMP
+</a>
+
+<hr class="line">
+<h2 class="title">Tracklist</h2>
+<div class="description">
+1. かげむかいのいえ<br>
+2. 笹目雪の予感<br>
+3. [に ゆ]<br>
+4. 語りの街で解き明かして<br>
+5. 月下階調<br>
+</div>
+
+<hr class="line">
+<h2 class="title">Credits</h2>
+<div class="description">
+Music:<br>
+A.Saxophone: 初吹音 さき<br>
+T.Saxophone: crow<br>
+Violin: Somel<br>
+Vocal: 媛香<br>
+Vocal: 花隈 千冬<br>
+Guitar: Podzol<br>
+Drums: 中野渡 拓実<br>
+Piano: tanigon<br>
+Bass: Sidran<br>
+Programmings: Quong<br>
+<br>
+Artwork: ぽん汰
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
