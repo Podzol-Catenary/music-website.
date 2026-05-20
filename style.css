@@ -59,7 +59,7 @@ display:flex;
 }
 
 .FlexContainer>span {
-border:solid thin #FFF;
+border:solid thin #f5f5f5;
 }
 
 .phrase {
