@@ -87,6 +87,13 @@ body {
     background:#666666;
 }
 
+/* 横線 */
+.line{
+    border:none;
+    border-top:1px solid #cccccc;
+
+    margin-bottom:25px;
+}
 
 /* 説明文 */
 .caption {
@@ -117,8 +124,10 @@ body {
 <body>
 
 <header>
-<h1 id="logo"><a href="index.html">
-<img src="logo.png" alt="podzol-catenary" height="75"></a></h1>
+ <h1 id="logo"><a href="index.html">
+ <div class="class1">
+  <img src="logo.png" alt="podzol-catenary" height="75"></a></h1>
+ </div>
 </header>
 
 <div class="class1">
@@ -153,7 +162,11 @@ body {
  
 </div>
 
-<div class="caption">▲画像をクリックすると専用ページに飛びます</div>
+<div class="class1">
+  <div class="caption">▲画像をクリックすると専用ページに飛びます
+  </div>
+</div>
+
 <br>
 </section>
 
@@ -247,27 +260,31 @@ body {
 
 
 <section>
+<hr class="line">
 <h1 class="page-title">BIO</h1>
-<div class="caption">
-幼少期よりクラシックギターを習う。高校時代にジャズに <br>
-出会い、大学進学をきっかけに移り住んだ北海道にて作曲<br>
-理論を学ぶ。 趣味は街並み写真の撮影。広島県呉市在住。<br>
--------------------------------------------------------------------<br>
-参加サークル: <br>
- 音楽) The Nudja Conspiracy <br>
- 写真) 港燈社 <br>
--------------------------------------------------------------------<br>
+<div class="class1">
+ <div class="caption">
+ 幼少期よりクラシックギターを習う。高校時代にジャズに <br>
+ 出会い、大学進学をきっかけに移り住んだ北海道にて作曲<br>
+ 理論を学ぶ。 趣味は街並み写真の撮影。広島県呉市在住。<br>
+ <br>
+ 参加サークル: <br>
+  音楽) The Nudja Conspiracy <br>
+  写真) 港燈社 <br>
+ <br>
+
+ <a href = "music/music.html" class="link-button">
+ <p class="text" >▶︎音楽アルバム</p> </a>
+ <a href = "machinami/landscape/landscape.html" class="link-button">
+ <p class="text">▶︎街並み写真</p> </a>
+ </div>
 </div>
-<a href = "music/music.html" class="link-button">
-<p class="text" >▶︎音楽アルバム</p> </a>
-<a href = "machinami/landscape/landscape.html" class="link-button">
-<p class="text">▶︎街並み写真</p> </a>
 <br>
 
 <br>
-</section>
 
-<section>
+<hr class="line">
+
 <h1 class="page-title">SNS</h1>
 <a href="https://x.com/alfi_le" class="link-button">
 <p class="text">▶︎X(Twitter)</p> </a>
@@ -293,9 +310,10 @@ body {
  2025.01.26 ...The Nudja Conspiracy の公式Twitterを開設しました。<br>
 今後の予定 〜調整中〜<br>
 </div>
-</section>
+<br>
 
-<section>
+<hr class="line">
+
 <h1 class="page-title">LINKS</h1>
 <a href="https://gradierwerk.github.io" class="link-button">
 <p class="text">▶︎GRADIERWERK</p> </a>
@@ -316,11 +334,10 @@ body {
 <h1 class="page-title">CONTACT</h1>
 <div class="caption">ご依頼・ご相談 Email: nudjataro (a) gmail.com </div>
 <br>
-</p>
 
-</section>
+<hr class="line">
 
-<section>
+
 <div class="container">
   <img src="machinami/film/jpg/fukuyama.jpg" alt="">
   <img src="machinami/film/jpg/hakodate.jpg" alt="">
