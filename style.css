@@ -104,7 +104,74 @@
 /* ↑↑↑ indexページコピペ ↑↑↑ */
 
 
+/* ↓↓↓ album紹介ページコピペ ↓↓↓ */
+/* 全体レイアウト */
+.content{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
 
+    width:100%;
+    margin:0 auto;
+}
+
+/* 左右を同じ幅にする */
+.image-area,
+.text-area{
+    width:50%;
+}
+
+/* 左側画像エリア */
+.image-area{
+    display:flex;
+    justify-content:center; /* 横方向中央 */
+    transform: translateX(-10px); /* ← 100px左にずらす */
+}
+
+/* 正方形画像 */
+.image-area img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    border-radius:10px;
+    display:block;
+}
+
+/* タイトル */
+.title{
+    font-size:32px;
+    font-weight:200;
+    color:#222;
+
+    margin:0 0 15px 0;
+}
+
+/* 説明文 */
+.description{
+    font-size:16px;
+    font-weight:200;
+    color:#444;
+}
+
+/* スマホ対応 */
+@media screen and (max-width:768px){
+
+    .content{
+        flex-direction:column;
+        width:90%;
+        gap:30px;
+    }
+
+    .image-area,
+    .text-area{
+        width:100%;
+    }
+
+    .title{
+        font-size:26px;
+    }
+}
+/* ↑↑↑ album紹介ページコピペ ↑↑↑ */
 
 
 .text {
