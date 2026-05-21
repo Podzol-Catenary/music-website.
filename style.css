@@ -90,12 +90,12 @@
 @media screen and (max-width: 768px) {
 
     .gallery {
-        grid-template-columns: 1fr;
+        grid-template-columns: 2fr;
         gap: 20px;
     }
     
     .gallery-wrapper {
-        width: 10%;
+        width: 30%;
     }
 
     .page-title {
