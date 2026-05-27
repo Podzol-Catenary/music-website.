@@ -47,7 +47,7 @@
 }
 
 /* ボタン */
-.link-btn {
+.link-button {
   display: inline-block;
   background-color: #808080; /* 灰色 */
   color: white;              /* 白文字 */
@@ -58,7 +58,7 @@
 }
 
 /* 訪問後 */
-.link-btn:visited {
+.link-button:visited {
   color: white;
   background-color: #808080;
 }
