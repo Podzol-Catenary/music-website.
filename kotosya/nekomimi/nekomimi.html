@@ -13,19 +13,64 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js" defer type="text/javascript"></script>
 
 <style>
-.container {
-    max-width: 500px;      /* 最大幅500px */
-    margin: 0 auto;        /* 画面中央に配置 */
-    padding: 0 10px;       /* 左右10pxの余白 */
-    box-sizing: border-box;/* paddingを幅に含める */
+html,body{
+    margin:0;
+    height:100%;
+    font-family:sans-serif;
+}
+
+/* 全体 */
+.wrapper{
+    display:flex;
+    height:100vh;
+}
+
+/* 左右の画像 */
+.side{
+    flex:1;
+    background-size:cover;
+    background-position:center;
+}
+
+.left{
+    background-image:url("left.jpg");
+}
+
+.right{
+    background-image:url("right.jpg");
+}
+
+/* 中央 */
+.center{
+    width:800px;
+    background:#ffffff;
+    box-sizing:border-box;
+    padding:25px;
+    overflow-y:auto;
+    line-height:1.9;
+}
+
+/* スマホ */
+@media (max-width:820px){
+    .side{display:none;}
+
+    .wrapper{display:block;}
+
+    .center{
+        width:calc(100% - 20px);
+        margin:0 auto;
+        height:100vh;}
 }
 </style>
 
 </head>
 <body>
 
+<div class="wrapper">
 
-<div class="container">
+    <div class="side left"></div>
+
+    <div class="center">
 
 <h1>猫耳少女/三上夏帆物語</h1>
 <h3>猫耳少女 1</h3>
@@ -184,6 +229,9 @@
 <br>
 
 </div>
+<div class="side right"></div>
+</div>
+
 </font>
 </p>
  <hr class="line">
