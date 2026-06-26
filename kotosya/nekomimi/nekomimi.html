@@ -13,73 +13,53 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js" defer type="text/javascript"></script>
 
 <style>
-
-html,body{
+html,
+body{
     margin:0;
-    padding:0;
     height:100%;
-    overflow:hidden;          /* 全体はスクロールしない */
+    overflow:hidden;
     font-family:"Yu Gothic",sans-serif;
 }
 
-/* 全体レイアウト */
+/* 全体 */
 .wrapper{
     display:flex;
     height:100vh;
 }
 
-/* 左右画像 */
-.left,
-.right{
+/* 左右画像エリア */
+.side{
     flex:1;
-    background-size:cover;
-    background-position:center center;
-    background-repeat:no-repeat;
-}
-
-/* 左画像 */
-.left,
-.right{
-    flex:1;
-
     display:flex;
     justify-content:center;
     align-items:center;
-
     background:#000;
 }
 
-.left img,
-.right img{
-
+/* 画像 */
+.side img{
     width:100%;
     height:100%;
-
-    object-fit:contain;
-
+    object-fit:contain;      /* 見切れない */
+    display:block;
 }
 
 /* 中央 */
 .center{
 
     width:800px;
-    background:#ffffff;
+    background:#fff;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    box-shadow:0 0 15px rgba(0,0,0,.3);
+    box-shadow:0 0 15px rgba(0,0,0,.35);
 
 }
 
-/* スクロールする窓 */
+/* スクロールする本文 */
 .content{
 
-    width:100%;
-    height:100%;
+    height:100vh;
 
-    overflow-y:scroll;      /* スクロールバーを表示 */
+    overflow-y:scroll;
 
     padding:30px;
 
@@ -89,45 +69,45 @@ html,body{
 
 }
 
-/* スクロールバー装飾（Chrome・Edge・Safari） */
+/* スクロールバー */
+
 .content::-webkit-scrollbar{
     width:12px;
 }
 
 .content::-webkit-scrollbar-track{
-    background:#eeeeee;
+    background:#ddd;
 }
 
 .content::-webkit-scrollbar-thumb{
-    background:#999;
+    background:#888;
 }
 
 .content::-webkit-scrollbar-thumb:hover{
-    background:#666;
+    background:#555;
 }
 
 /* スマホ */
 
 @media screen and (max-width:820px){
 
-.left,
-.right{
-    display:none;
-}
+    .side{
+        display:none;
+    }
 
-.wrapper{
-    display:block;
-}
+    .wrapper{
+        display:block;
+    }
 
-.center{
+    .center{
+        width:calc(100% - 20px);
+        margin:auto;
+        height:100vh;
+    }
 
-    width:calc(100% - 20px);
-
-    margin:0 auto;
-
-    height:100vh;
-
-}
+    .content{
+        height:100vh;
+    }
 
 }
 </style>
@@ -301,7 +281,10 @@ html,body{
 
 </div>
 </div>
-<div class="right"></div>
+    <!-- 右画像 -->
+<div class="side">
+<img src="right.jpg" alt="右画像">
+</div>
 </div>
 
  <hr class="line">
