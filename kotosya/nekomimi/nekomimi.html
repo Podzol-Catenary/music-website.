@@ -38,13 +38,25 @@ html,body{
 }
 
 /* 左画像 */
-.left{
-    background-image:url("left.jpg");
+.left,
+.right{
+    flex:1;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#000;
 }
 
-/* 右画像 */
-.right{
-    background-image:url("right.jpg");
+.left img,
+.right img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
 }
 
 /* 中央 */
