@@ -257,6 +257,8 @@ function renderPage(){
   表示切替
 ========================================= */
 function startReading(){
+
+    console.log("startReading開始");
    
     startButton.addEventListener(
     "click",
