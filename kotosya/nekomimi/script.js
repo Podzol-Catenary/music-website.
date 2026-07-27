@@ -294,6 +294,7 @@ function nextPage(){
     if(currentPage + 2 < totalPages()){
         currentPage += 2;
         renderPage();
+        savePosition();
     }
     else{
         showBackCover();
@@ -344,6 +345,7 @@ function prevPage(){
     if(currentPage >= 2){
         currentPage -= 2;
         renderPage();
+        savePosition();
     }
 }
 
@@ -628,31 +630,6 @@ function loadPosition(){
             Number(saved);
     }
 }
-
-
-/* =========================================
-   ページ移動後処理
-
-   現在位置保存
-========================================= */
-
-
-const originalNextPage =
-    nextPage;
-nextPage = function(){
-    originalNextPage();
-    normalizePage();
-    savePosition();
-};
-
-const originalPrevPage =
-    prevPage;
-prevPage = function(){
-    originalPrevPage();
-    normalizePage();
-    savePosition();
-};
-
 
 /*=========================================
    初期化
