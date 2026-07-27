@@ -397,14 +397,13 @@ function prevPage(){
    矢印ボタン
 ========================================= */
 
-
 nextButton.addEventListener(
 
     "click",
 
     ()=>{
 
-        nextPage();
+        prevPage();
 
     }
 
@@ -418,7 +417,7 @@ prevButton.addEventListener(
 
     ()=>{
 
-        prevPage();
+        nextPage();
 
     }
 
