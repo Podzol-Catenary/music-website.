@@ -52,6 +52,8 @@ const leftNumber =
 const charsPerColumn = 18;
 const columnsPerPage = 10;
 
+const charsPerPage =
+    charsPerColumn * columnsPerPage;
 
 /* =========================================
    状態管理
