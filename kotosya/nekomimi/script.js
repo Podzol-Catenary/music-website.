@@ -107,7 +107,7 @@ const page =
         (fontSize * 2)
         );
 
-const safety = 0.5;
+const safety = 0.85;
 
 const result =
     Math.floor(
