@@ -448,7 +448,6 @@ document.addEventListener(
     (event)=>{
         touchEndX =
             event.changedTouches[0].screenX;
-
         swipeCheck();
     },
     {
@@ -461,31 +460,27 @@ function swipeCheck(){
         touchStartX - touchEndX;
 
     /*
-        左へスワイプ
-        次ページ
+        左から右へスワイプ
+        → 次ページ
     */
 
-    if(distance > 50){
-
+    if(distance < -50){
         nextPage();
     }
 
     /*
-        右へスワイプ
-        前ページ
+        右から左へスワイプ
+        → 前ページ
     */
-
-    if(distance < -50){
+    if(distance > 50){
         prevPage();
-
     }
 }
-
 /* =========================================
    画面タップ操作
 
-   左半分 → 前へ
-   右半分 → 次へ
+   左半分 → 次へ
+   右半分 → 前へ
 
    スマホ向け
 ========================================= */
