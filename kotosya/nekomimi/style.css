@@ -222,20 +222,29 @@ body{
    本文
 ========================================= */
 .pageContent {
-    width:100%;
-    height:100%;
-    box-sizing:border-box;
+
     writing-mode:vertical-rl;
-    white-space:pre-wrap;
     text-orientation:mixed;
     font-family:
         "Yu Mincho",
         "Hiragino Mincho ProN",
         serif;
-    font-size:clamp(14px, 2vw, 24px);
+   
+    /* 文字サイズの基準 */
+    font-size:clamp(
+        16px,
+        2vw,
+        28px
+    );
+
+    /* 文字間隔 */
     line-height:2;
-    padding:8%;
+
+    /* ページ内余白 */
+    padding:6%;
+    box-sizing:border-box;
     overflow:hidden;
+    white-space:pre-wrap;
 }
 
 /* =========================================
