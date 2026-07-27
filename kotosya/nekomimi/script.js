@@ -101,8 +101,11 @@ const page =
             height / fontSize
         );
 
-const columns =
-    Math.floor(width / fontSize);
+    const columns =
+        Math.floor(
+        width /
+        (fontSize * 2)
+        );
 
 const safety = 0.5;
 
