@@ -528,11 +528,9 @@ function createPages(text){
         }
     }
 
-
     if(current){
         lines.push(current);
     }
-
 
     /*
        何行で1ページか
@@ -544,16 +542,73 @@ function createPages(text){
         i+=columnsPerPage
     ){
 
-        novelPages.push(
-            lines
-            .slice(
-                i,
-                i+columnsPerPage
-            )
-            .join("")
-        );
+let tempPages = [];
+
+for(
+    let i=0;
+    i<lines.length;
+    i+=columnsPerPage
+){
+
+    tempPages.push(
+
+        lines
+        .slice(
+            i,
+            i + columnsPerPage
+        )
+        .join("")
+    );
+}
+// 禁則処理
+novelPages =
+    applyKinsoku(tempPages);
     }
 }
+
+
+function applyKinsoku(pages){
+    // ページ先頭に置かない文字
+    const prohibitedStart = [
+        "。",
+        "、",
+        "．",
+        "，",
+        "」",
+        "』",
+        "）",
+        "］",
+        "】",
+        "〉",
+        "》",
+        "〕",
+        "！",
+        "？",
+        "」",
+        "』"
+    ];
+
+    for(
+        let i = 1;
+        i < pages.length;
+        i++
+    ){
+        let firstChar =
+            pages[i].charAt(0);
+        if(
+            prohibitedStart.includes(firstChar)
+        ){
+            // 前ページ末尾へ移動
+            pages[i-1] += firstChar;
+
+            // 現ページから削除
+            pages[i] =
+                pages[i].substring(1);
+      }
+    }
+    return pages;
+}
+
 
 
 /* =========================================
