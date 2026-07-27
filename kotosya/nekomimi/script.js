@@ -104,9 +104,12 @@ const page =
 const columns =
     Math.floor(width / fontSize);
 
-    const result =
-        charsPerColumn * columns;
+const safety = 0.75;
 
+const result =
+    Math.floor(
+        charsPerColumn * columns * safety
+    );
 
     console.log({
         width: width,
