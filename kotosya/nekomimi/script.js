@@ -134,13 +134,14 @@ for(
         )
         .join("")
     );
-}
+
+
+   
 // 禁則処理
 novelPages =
     applyKinsoku(tempPages);
     }
 }
-
 
 function applyKinsoku(pages){
     // ページ先頭に置かない文字
@@ -182,8 +183,8 @@ function applyKinsoku(pages){
       }
     }
     return pages;
+　}
 }
-
 /* =========================================
    ページ総数取得
 ========================================= */
