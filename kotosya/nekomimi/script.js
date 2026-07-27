@@ -87,7 +87,7 @@ const page =
         parseFloat(style.fontSize);
 
     const lineHeight =
-        parseFloat(style.lineHeight);
+        parseFloat(style.lineHeight) || fontSize * 2;
 
     const width =
         page.clientWidth;
