@@ -75,27 +75,41 @@ function isMobile(){
 /* =========================================
   自動ページ振り分け
 ========================================= */
-
 function createPages(text){
     novelPages = [];
     let buffer = "";
-
+    let inQuote = false;
     for(let char of text){
-        buffer += char;
 
-        if(buffer.length >= charsPerPage){
+        if(char === "「"){
+            inQuote = true;
+        }
+        if(char === "」"){
+            inQuote = false;
+        }
+
+        // 改行をそのまま保持
+        if(char === "\n"){
+            buffer += "\n";
+        }
+        else{
+            buffer += char;
+        }
+
+        if(
+            buffer.length >= charsPerPage
+            &&
+            !inQuote
+        ){
             novelPages.push(buffer);
             buffer = "";
         }
     }
 
-    // 最後に残った文章
     if(buffer.length > 0){
         novelPages.push(buffer);
-
     }
 
-    // 禁則処理
     novelPages =
         applyKinsoku(novelPages);
 }
