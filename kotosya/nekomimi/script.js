@@ -79,100 +79,75 @@ function isMobile(){
 ========================================= */
 
 function createPages(text){
+    novelPages = [];
+    let buffer = "";
 
-    let lines = [];
-    let current = "";
-   
-    /*
-      縦書きなので
-      改行単位を考慮
-    */
+    for(let char of text){
+        buffer += char;
 
-    for(
-        let char of text
-    ){
-        current += char;
-
-        if(
-            current.length >= charsPerColumn
-            ||
-            char === "\n"
-        ){
-            lines.push(current);
-            current="";
+        if(buffer.length >= charsPerPage){
+            novelPages.push(buffer);
+            buffer = "";
         }
     }
 
-    if(current){
-        lines.push(current);
+    // 最後に残った文章
+    if(buffer.length > 0){
+        novelPages.push(buffer);
+
     }
 
-    /*
-       何行で1ページか
-    */
+    // 禁則処理
+    novelPages =
+        applyKinsoku(novelPages);
+}
+/* =========================================
+   禁則処理
 
-    for(
-        let i=0;
-        i<lines.length;
-        i+=columnsPerPage
-    ){
+   ページ先頭に置かない文字を
+   前ページ末尾へ移動する
 
-let tempPages = [];
-
-for(
-    let i=0;
-    i<lines.length;
-    i+=columnsPerPage
-){
-
-    tempPages.push(
-
-        lines
-        .slice(
-            i,
-            i + columnsPerPage
-        )
-        .join("")
-    );
-
-   
-// 禁則処理
+========================================= */
 function applyKinsoku(pages){
     const prohibitedStart = [
         "。",
         "、",
+        "．",
+        "，",
         "」",
         "』",
         "）",
+        "］",
+        "】",
         "！",
         "？"
     ];
 
     for(
-        let i=1;
-        i<pages.length;
+        let i = 1;
+        i < pages.length;
         i++
     ){
-
         if(!pages[i]){
             continue;
-        }
-
+       }
         let firstChar =
             pages[i].charAt(0);
-
         if(
             prohibitedStart.includes(firstChar)
         ){
-            pages[i-1] += firstChar;
+            // 前ページへ移動
+            pages[i - 1] += firstChar;
+
+            // 現ページから削除
             pages[i] =
                 pages[i].substring(1);
         }
     }
+
     return pages;
-   }
 }
-      
+    
 /* =========================================
    ページ総数取得
 ========================================= */
