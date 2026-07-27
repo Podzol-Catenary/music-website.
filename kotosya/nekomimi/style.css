@@ -180,7 +180,7 @@ body{
 
     cursor:pointer;
 
-    border:1px solid #999;
+    border:2px solid #999;
 
     background:white;
 
@@ -240,9 +240,9 @@ body{
    
     /* 文字サイズの基準 */
     font-size:clamp(
-        16px,
-        2vw,
-        28px
+      16px,
+      1.3vw,
+      22px
     );
 
     /* 文字間隔 */
