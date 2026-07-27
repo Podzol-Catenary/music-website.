@@ -45,11 +45,7 @@ const rightNumber =
 const leftNumber =
     document.getElementById("leftNumber");
 
-const charsPerColumn = 〇〇;
-const columnsPerPage = 〇〇;
 
-const charsPerPage =
-    charsPerColumn * columnsPerPage;
 
 /* =========================================
    状態管理
