@@ -49,9 +49,6 @@ const rightNumber =
 const leftNumber =
     document.getElementById("leftNumber");
 
-const charsPerColumn = 18;
-
-const columnsPerPage = 10;
 
 /* =========================================
    状態管理
@@ -62,9 +59,6 @@ let currentPage = 0;
 // 読書開始前
 let readingStarted = false;
 
-// ページ振り分け
-let novelPages = [];
-
 /* =========================================
    画面サイズ判定
 ========================================= */
@@ -73,8 +67,6 @@ function isMobile(){
     return window.innerWidth <= 900;
 
 }
-
-
 
 /* =========================================
    ページ総数取得
@@ -202,12 +194,8 @@ function nextPage(){
 
     if(isMobile()){
 
-
         if(currentPage < totalPages()-1){
-
-
             currentPage++;
-
             renderPage();
         }
         else{
@@ -220,7 +208,6 @@ function nextPage(){
         PC
         見開き2ページずつ進む
     */
-
 
     if(currentPage + 2 < totalPages()){
         currentPage += 2;
@@ -503,6 +490,11 @@ function updateViewerState(){
 /* =========================================
   自動ページ振り分け
 ========================================= */
+const charsPerColumn = 18;
+const columnsPerPage = 10;
+
+// ページ振り分け
+let novelPages = [];
 
 function createPages(text){
 
