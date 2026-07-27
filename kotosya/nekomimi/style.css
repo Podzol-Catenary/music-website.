@@ -74,25 +74,17 @@ body{
    表紙・裏表紙
 ========================================= */
 
-.cover{
-
-    width:70vw;
-    max-width:900px;
-
-    height:90vh;
-
-    background:#faf8f2;
-
-    border:1px solid #c9c1b7;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.18);
-
+#cover {
+    width: min(45vw, 600px);
+    aspect-ratio: 1 / 1.45;
+    background:#fff;
+    color:#000;
     display:flex;
-
+    flex-direction:column;
     justify-content:center;
     align-items:center;
-
+    margin:auto;
+    overflow:hidden;
 }
 
 .coverInner{
@@ -172,7 +164,7 @@ body{
 
 .page {
 
-    width: min(45vw, 600px);
+    width: min(48vw, 700px);
     aspect-ratio: 1 / 1.45;
     background:#fff;
     color:#000;
