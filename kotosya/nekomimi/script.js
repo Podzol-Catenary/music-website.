@@ -59,11 +59,11 @@ const columnsPerPage = 10;
 
 let currentPage = 0;
 
-// 読書開始前
-let readingStarted = false;
-
 // ページ振り分け
 let novelPages = [];
+
+// 読書開始前
+let readingStarted = false;
 
 /* =========================================
    画面サイズ判定
