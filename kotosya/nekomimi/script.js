@@ -104,7 +104,7 @@ const page =
 const columns =
     Math.floor(width / fontSize);
 
-const safety = 0.75;
+const safety = 0.5;
 
 const result =
     Math.floor(
