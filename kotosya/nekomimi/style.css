@@ -1,0 +1,534 @@
+/* =========================================
+   共通
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    background:#d8d5cf;
+
+    font-family:
+        "Yu Mincho",
+        "Hiragino Mincho ProN",
+        "MS Mincho",
+        serif;
+
+}
+
+/* =========================================
+   非表示
+========================================= */
+
+.hidden{
+
+    display:none !important;
+
+}
+
+/* =========================================
+   ビューア
+========================================= */
+
+#viewer{
+
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+}
+
+/* =========================================
+   本
+========================================= */
+
+#book{
+
+    width:96%;
+    height:94%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+}
+
+/* =========================================
+   表紙・裏表紙
+========================================= */
+
+.cover{
+
+    width:70vw;
+    max-width:900px;
+
+    height:90vh;
+
+    background:#faf8f2;
+
+    border:1px solid #c9c1b7;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.18);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+}
+
+.coverInner{
+
+    text-align:center;
+
+}
+
+#bookTitle{
+
+    font-size:48px;
+
+    margin-bottom:24px;
+
+    letter-spacing:.25em;
+
+}
+
+#subTitle{
+
+    font-size:24px;
+
+    font-weight:normal;
+
+    margin-bottom:80px;
+
+}
+
+#author{
+
+    font-size:22px;
+
+    margin-bottom:60px;
+
+}
+
+#startButton{
+
+    padding:
+
+        14px
+        42px;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    border:1px solid #999;
+
+    background:white;
+
+    transition:.2s;
+
+}
+
+#startButton:hover{
+
+    background:#efefef;
+
+}
+
+/* =========================================
+   見開き
+========================================= */
+
+#pages{
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:18px;
+
+}
+
+/* =========================================
+   ページ
+========================================= */
+
+.page{
+
+    position:relative;
+
+    width:45%;
+
+    height:92%;
+
+    background:#fffefb;
+
+    border:1px solid #ddd;
+
+    box-shadow:
+
+        0 5px 18px rgba(0,0,0,.15);
+
+    overflow:hidden;
+
+}
+
+/* =========================================
+   本文
+========================================= */
+
+.pageContent{
+
+    width:100%;
+    height:100%;
+
+    padding:
+
+        48px
+        40px;
+
+    writing-mode:vertical-rl;
+
+    text-orientation:mixed;
+
+    font-size:22px;
+
+    line-height:2.2;
+
+    letter-spacing:.08em;
+
+    overflow:hidden;
+
+    white-space:pre-wrap;
+
+}
+
+/* =========================================
+   ページ番号
+========================================= */
+
+.pageNumber{
+
+    position:absolute;
+
+    bottom:12px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-size:14px;
+
+    color:#888;
+
+}
+
+/* =========================================
+   左右の矢印
+========================================= */
+
+.arrow{
+
+    position:fixed;
+
+    top:50%;
+    transform:translateY(-50%);
+
+    width:72px;
+    height:100vh;
+
+    border:none;
+    outline:none;
+
+    background:transparent;
+
+    color:rgba(0,0,0,.18);
+
+    font-size:42px;
+
+    cursor:pointer;
+
+    transition:
+        background .2s,
+        color .2s;
+
+    z-index:100;
+
+}
+
+.arrow:hover{
+
+    background:rgba(255,255,255,.12);
+
+    color:rgba(0,0,0,.45);
+
+}
+
+.arrow.left{
+
+    left:0;
+
+}
+
+.arrow.right{
+
+    right:0;
+
+}
+
+/* =========================================
+   ページ選択禁止
+========================================= */
+
+.pageContent,
+.cover{
+
+    user-select:none;
+    -webkit-user-select:none;
+
+}
+
+/* =========================================
+   ボタン共通
+========================================= */
+
+button{
+
+    font-family:inherit;
+
+}
+
+/* =========================================
+   リンク（将来用）
+========================================= */
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+/* =========================================
+   スマートフォン
+========================================= */
+
+@media screen and (max-width:900px){
+
+    /* 本全体 */
+
+    #book{
+
+        width:100%;
+        height:100%;
+
+    }
+
+    /* 見開き */
+
+    #pages{
+
+        width:100%;
+        height:100%;
+
+        display:flex;
+
+        justify-content:center;
+        align-items:center;
+
+        gap:0;
+
+    }
+
+    /* 左ページは非表示 */
+
+    #leftPage{
+
+        display:none;
+
+    }
+
+    /* 右ページだけ表示 */
+
+    #rightPage{
+
+        width:96%;
+        height:98%;
+
+    }
+
+    /* 表紙 */
+
+    .cover{
+
+        width:96%;
+        height:96%;
+
+    }
+
+    /* 本文 */
+
+    .pageContent{
+
+        font-size:20px;
+
+        line-height:2.05;
+
+        padding:
+
+            34px
+            26px;
+
+    }
+
+    /* 矢印 */
+
+    .arrow{
+
+        width:48px;
+
+        font-size:30px;
+
+    }
+
+    /* タイトル */
+
+    #bookTitle{
+
+        font-size:34px;
+
+    }
+
+    #subTitle{
+
+        font-size:18px;
+
+    }
+
+    #author{
+
+        font-size:18px;
+
+    }
+
+}
+
+/* =========================================
+   小さいスマホ
+========================================= */
+
+@media screen and (max-width:480px){
+
+    .pageContent{
+
+        font-size:18px;
+
+        line-height:1.95;
+
+        padding:
+
+            24px
+            18px;
+
+    }
+
+    #bookTitle{
+
+        font-size:28px;
+
+    }
+
+    #subTitle{
+
+        font-size:16px;
+
+    }
+
+    #author{
+
+        font-size:16px;
+
+    }
+
+    #startButton{
+
+        padding:
+
+            12px
+            28px;
+
+        font-size:16px;
+
+    }
+
+}
+
+/* =========================================
+   横向きスマホ
+========================================= */
+
+@media screen and (max-height:600px){
+
+    .pageContent{
+
+        font-size:18px;
+
+    }
+
+    .cover{
+
+        height:94%;
+
+    }
+
+}
+
+/* =========================================
+   ダークモード対応（OS設定）
+========================================= */
+
+@media (prefers-color-scheme: dark){
+
+    body{
+
+        background:#2b2b2b;
+
+    }
+
+    .page{
+
+        background:#f8f6f1;
+
+    }
+
+    .cover{
+
+        background:#f3f1eb;
+
+    }
+
+}
