@@ -49,6 +49,9 @@ const rightNumber =
 const leftNumber =
     document.getElementById("leftNumber");
 
+const charsPerColumn = 18;
+const columnsPerPage = 10;
+
 
 /* =========================================
    状態管理
@@ -59,6 +62,9 @@ let currentPage = 0;
 // 読書開始前
 let readingStarted = false;
 
+// ページ振り分け
+let novelPages = [];
+
 /* =========================================
    画面サイズ判定
 ========================================= */
@@ -66,6 +72,116 @@ let readingStarted = false;
 function isMobile(){
     return window.innerWidth <= 900;
 
+}
+
+/* =========================================
+  自動ページ振り分け
+========================================= */
+
+function createPages(text){
+
+    let lines = [];
+    let current = "";
+   
+    /*
+      縦書きなので
+      改行単位を考慮
+    */
+
+    for(
+        let char of text
+    ){
+        current += char;
+
+        if(
+            current.length >= charsPerColumn
+            ||
+            char === "\n"
+        ){
+            lines.push(current);
+            current="";
+        }
+    }
+
+    if(current){
+        lines.push(current);
+    }
+
+    /*
+       何行で1ページか
+    */
+
+    for(
+        let i=0;
+        i<lines.length;
+        i+=columnsPerPage
+    ){
+
+let tempPages = [];
+
+for(
+    let i=0;
+    i<lines.length;
+    i+=columnsPerPage
+){
+
+    tempPages.push(
+
+        lines
+        .slice(
+            i,
+            i + columnsPerPage
+        )
+        .join("")
+    );
+}
+// 禁則処理
+novelPages =
+    applyKinsoku(tempPages);
+    }
+}
+
+
+function applyKinsoku(pages){
+    // ページ先頭に置かない文字
+    const prohibitedStart = [
+        "。",
+        "、",
+        "．",
+        "，",
+        "」",
+        "』",
+        "）",
+        "］",
+        "】",
+        "〉",
+        "》",
+        "〕",
+        "！",
+        "？",
+        "」",
+        "』"
+    ];
+
+    for(
+        let i = 1;
+        i < pages.length;
+        i++
+    ){
+        let firstChar =
+            pages[i].charAt(0);
+        if(
+            prohibitedStart.includes(firstChar)
+        ){
+            // 前ページ末尾へ移動
+            pages[i-1] += firstChar;
+
+            // 現ページから削除
+            pages[i] =
+                pages[i].substring(1);
+      }
+    }
+    return pages;
 }
 
 /* =========================================
@@ -486,123 +602,6 @@ function updateViewerState(){
         "block";
 
 }
-
-/* =========================================
-  自動ページ振り分け
-========================================= */
-const charsPerColumn = 18;
-const columnsPerPage = 10;
-
-// ページ振り分け
-let novelPages = [];
-
-function createPages(text){
-
-    let lines = [];
-    let current = "";
-   
-    /*
-      縦書きなので
-      改行単位を考慮
-    */
-
-    for(
-        let char of text
-    ){
-        current += char;
-
-        if(
-            current.length >= charsPerColumn
-            ||
-            char === "\n"
-        ){
-            lines.push(current);
-            current="";
-        }
-    }
-
-    if(current){
-        lines.push(current);
-    }
-
-    /*
-       何行で1ページか
-    */
-
-    for(
-        let i=0;
-        i<lines.length;
-        i+=columnsPerPage
-    ){
-
-let tempPages = [];
-
-for(
-    let i=0;
-    i<lines.length;
-    i+=columnsPerPage
-){
-
-    tempPages.push(
-
-        lines
-        .slice(
-            i,
-            i + columnsPerPage
-        )
-        .join("")
-    );
-}
-// 禁則処理
-novelPages =
-    applyKinsoku(tempPages);
-    }
-}
-
-
-function applyKinsoku(pages){
-    // ページ先頭に置かない文字
-    const prohibitedStart = [
-        "。",
-        "、",
-        "．",
-        "，",
-        "」",
-        "』",
-        "）",
-        "］",
-        "】",
-        "〉",
-        "》",
-        "〕",
-        "！",
-        "？",
-        "」",
-        "』"
-    ];
-
-    for(
-        let i = 1;
-        i < pages.length;
-        i++
-    ){
-        let firstChar =
-            pages[i].charAt(0);
-        if(
-            prohibitedStart.includes(firstChar)
-        ){
-            // 前ページ末尾へ移動
-            pages[i-1] += firstChar;
-
-            // 現ページから削除
-            pages[i] =
-                pages[i].substring(1);
-      }
-    }
-    return pages;
-}
-
-
 
 /* =========================================
    renderPage拡張
