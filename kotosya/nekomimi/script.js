@@ -45,8 +45,8 @@ const rightNumber =
 const leftNumber =
     document.getElementById("leftNumber");
 
-const charsPerColumn = 34;
-const columnsPerPage = 10;
+const charsPerColumn = 〇〇;
+const columnsPerPage = 〇〇;
 
 const charsPerPage =
     charsPerColumn * columnsPerPage;
@@ -71,6 +71,43 @@ function isMobile(){
     return window.innerWidth <= 900;
 
 }
+/* =========================================
+  画面サイズ計測
+========================================= */
+function calculateCharsPerPage(){
+    const page =
+        document.querySelector(".pageContent");
+    if(!page){
+        return 200;
+    }
+    const style =
+        window.getComputedStyle(page);
+    const fontSize =
+        parseFloat(style.fontSize);
+    const lineHeight =
+        parseFloat(style.lineHeight);
+    const width =
+        page.clientWidth;
+    const height =
+        page.clientHeight;
+    // 縦書きなので
+    // 高さ÷文字サイズ＝1列文字数
+    const charsPerColumn =
+        Math.floor(
+            height / fontSize
+        );
+
+    // 幅÷行間＝列数
+    const columns =
+        Math.floor(
+            width / lineHeight
+        );
+    return (
+        charsPerColumn *
+        columns
+    );
+}
+
 
 /* =========================================
   自動ページ振り分け
@@ -97,7 +134,7 @@ function createPages(text){
         }
 
         if(
-            buffer.length >= charsPerPage
+            buffer.length >= calculateCharsPerPage()
             &&
             !inQuote
         ){
@@ -523,14 +560,19 @@ document.addEventListener(
 ========================================= */
 
 window.addEventListener(
-    "resize",
-    ()=>{
-        if(!readingStarted){
-            return;
-        }
-        renderPage();
+"resize",
+()=>{
+    if(!readingStarted){
+        return;
     }
-);
+    const position =
+        currentPage;
+
+    createPages(novelText);
+    currentPage =
+        position;
+    renderPage();
+});
 
 /* =========================================
    ページ番号・矢印状態更新
@@ -669,7 +711,9 @@ function initializeViewer(){
 /* =========================================
    起動
 ========================================= */
-createPages(novelText);
 initializeViewer();
+setTimeout(()=>{
+    createPages(novelText);
+},100);
 
 
