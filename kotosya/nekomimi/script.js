@@ -264,32 +264,26 @@ function renderPage(){
 ========================================= */
 function startReading(){
 
-    console.log("startReading開始");
-
     readingStarted = true;
     cover.classList.add("hidden");
     pagesArea.classList.remove("hidden");
     backCover.classList.add("hidden");
 
-    // ブラウザのレイアウト確定を待つ
-    setTimeout(()=>{
-        console.log("本文サイズ計測開始");
-        createPages(novelText);
-        console.log(
-            "ページ数:",
-            novelPages.length
-        );
-        currentPage = 0;
-        renderPage();
+    // 表示反映を待つ
+    requestAnimationFrame(()=>{
+        requestAnimationFrame(()=>{
 
-    },500);
+            console.log("計測開始");
+            createPages(novelText);
+            console.log(
+                "ページ数:",
+                novelPages.length
+            );
+            currentPage = 0;
+            renderPage();
+        });
+    });
 }
-
-
-startButton.addEventListener(
-    "click",
-    startReading
-);
 /* =========================================
    裏表紙表示
 ========================================= */
