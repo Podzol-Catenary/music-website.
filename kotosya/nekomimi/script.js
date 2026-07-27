@@ -269,11 +269,18 @@ function startReading(){
     backCover.classList.add("hidden");
 
     // レイアウトが反映された次の描画タイミングで計測
-    requestAnimationFrame(() => {
-        createPages(novelText);
-        currentPage = 0;
-        renderPage();
-    });
+requestAnimationFrame(() => {
+
+    createPages(novelText);
+
+    console.log("ページ数:", novelPages.length);
+    console.log(novelPages);
+
+    currentPage = 0;
+
+    renderPage();
+
+});
 }
 /* =========================================
    裏表紙表示
