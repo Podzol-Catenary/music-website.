@@ -335,6 +335,48 @@ a{
     text-decoration:none;
 }
 
+
+/* =========================================
+   読書位置バー
+========================================= */
+
+#progressBar{
+
+    position:fixed;
+
+    bottom:20px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:60%;
+
+    height:6px;
+
+    background:#ddd;
+
+    border-radius:5px;
+
+    overflow:hidden;
+
+    z-index:200;
+
+}
+
+
+#progress{
+
+    width:0%;
+
+    height:100%;
+
+    background:#555;
+
+    transition:.3s;
+
+}
+
+
 /* =========================================
    スマートフォン
 ========================================= */
