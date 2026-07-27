@@ -652,12 +652,12 @@ prevPage = function(){
 };
 
 
-/* =========================================
+/*=========================================
    初期化
 ========================================= */
 
-createPages(novelText);
-initializeViewer();
+function initializeViewer(){
+
     /*
         初期状態
         表紙表示
@@ -676,13 +676,16 @@ initializeViewer();
     );
 
     readingStarted = false;
-
     currentPage = 0;
 
     updateViewerState();
 
+}
+
 /* =========================================
    起動
 ========================================= */
-
+createPages(novelText);
 initializeViewer();
+
+
