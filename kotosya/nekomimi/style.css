@@ -226,6 +226,7 @@ body{
     height:100%;
     box-sizing:border-box;
     writing-mode:vertical-rl;
+    white-space:pre-wrap;
     text-orientation:mixed;
     font-family:
         "Yu Mincho",
