@@ -45,7 +45,7 @@ const rightNumber =
 const leftNumber =
     document.getElementById("leftNumber");
 
-const charsPerColumn = 28;
+const charsPerColumn = 34;
 const columnsPerPage = 10;
 
 const charsPerPage =
