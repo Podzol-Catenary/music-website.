@@ -273,7 +273,9 @@ function startReading(){
 
     // レイアウトが反映された次の描画タイミングで計測
 requestAnimationFrame(() => {
-
+   
+    console.log("計測値",calculateCharsPerPage());
+   
     createPages(novelText);
 
     console.log("ページ数:", novelPages.length);
