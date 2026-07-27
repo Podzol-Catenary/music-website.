@@ -170,6 +170,9 @@ body{
 
     gap:18px;
 
+
+    flex-direction:row-reverse;
+
 }
 
 /* =========================================
