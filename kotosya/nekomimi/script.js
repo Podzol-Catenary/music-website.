@@ -259,34 +259,31 @@ function renderPage(){
 function startReading(){
 
     console.log("startReading開始");
-   
-    startButton.addEventListener(
-    "click",
-    startReading
-    );
-   
+
     readingStarted = true;
 
     cover.classList.add("hidden");
     pagesArea.classList.remove("hidden");
     backCover.classList.add("hidden");
 
-    // レイアウトが反映された次の描画タイミングで計測
-requestAnimationFrame(() => {
-   
-    console.log("計測値",calculateCharsPerPage());
-   
-    createPages(novelText);
+    requestAnimationFrame(() => {
 
-    console.log("ページ数:", novelPages.length);
-    console.log(novelPages);
+        createPages(novelText);
 
-    currentPage = 0;
+        console.log("ページ数:", novelPages.length);
 
-    renderPage();
+        currentPage = 0;
 
-});
+        renderPage();
+
+    });
 }
+
+
+startButton.addEventListener(
+    "click",
+    startReading
+);
 /* =========================================
    裏表紙表示
 ========================================= */
