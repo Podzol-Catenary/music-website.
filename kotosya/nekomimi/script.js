@@ -138,18 +138,30 @@ function createPages(text){
         calculateCharsPerPage();
 
     for(let char of text){
+       
+if(char === "「"){ 
+   inQuote = true; 
+} 
+if(char === "」"){ 
+   inQuote = false; 
+} 
+// 改行をそのまま保持 
+if(char === "\n"){ 
+   buffer += "\n"; 
+} 
+else{
+   buffer += char; 
+}
 
-        ...
-
-        if(
-            buffer.length >= pageSize
-            &&
-            !inQuote
-        ){
-            novelPages.push(buffer);
-            buffer="";
-        }
-    }
+ if(
+   buffer.length >= pageSize
+    &&
+    !inQuote
+){
+    novelPages.push(buffer);
+    buffer="";
+   }
+}
 
     novelPages =
         applyKinsoku(novelPages);
