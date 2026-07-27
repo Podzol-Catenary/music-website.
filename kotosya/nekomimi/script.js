@@ -72,8 +72,8 @@ function isMobile(){
 ========================================= */
 function calculateCharsPerPage(){
 
-    const page =
-        document.querySelector(".pageContent");
+const page =
+    document.querySelector(".page");
 
     if(!page){
         console.log("pageContentがありません");
@@ -130,14 +130,10 @@ function createPages(text){
     novelPages = [];
 
     let buffer = "";
-
-    // ← これを追加
     let inQuote = false;
-
 
     const pageSize =
         calculateCharsPerPage();
-
 
     for(let char of text){
 
