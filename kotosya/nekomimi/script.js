@@ -74,37 +74,48 @@ function isMobile(){
   画面サイズ計測
 ========================================= */
 function calculateCharsPerPage(){
-
     const page =
         document.querySelector(".pageContent");
     if(!page){
+        console.log("pageContentが見つかりません");
         return 200;
     }
     const style =
         window.getComputedStyle(page);
     const fontSize =
         parseFloat(style.fontSize);
+    const lineHeight =
+        parseFloat(style.lineHeight);
     const width =
         page.clientWidth;
     const height =
         page.clientHeight;
 
-    // 1列に入る文字数
     const charsPerColumn =
         Math.floor(
             height / fontSize
         );
 
-    // 横方向の列数
     const columns =
         Math.floor(
-            width / fontSize
+            width / lineHeight
         );
 
-    return (
-        charsPerColumn *
-        columns
-    );
+    const result =
+        charsPerColumn * columns;
+
+    // ★確認用ログ
+    console.log({
+        width: width,
+        height: height,
+        fontSize: fontSize,
+        lineHeight: lineHeight,
+        charsPerColumn: charsPerColumn,
+        columns: columns,
+        charsPerPage: result
+    });
+
+    return result;
 }
 
 /* =========================================
