@@ -74,22 +74,30 @@ function isMobile(){
   画面サイズ計測
 ========================================= */
 function calculateCharsPerPage(){
+
     const page =
         document.querySelector(".pageContent");
+
     if(!page){
-        console.log("pageContentが見つかりません");
+        console.log("pageContentがありません");
         return 200;
     }
+
     const style =
         window.getComputedStyle(page);
+
     const fontSize =
         parseFloat(style.fontSize);
+
     const lineHeight =
         parseFloat(style.lineHeight);
+
     const width =
         page.clientWidth;
+
     const height =
         page.clientHeight;
+
 
     const charsPerColumn =
         Math.floor(
@@ -104,7 +112,7 @@ function calculateCharsPerPage(){
     const result =
         charsPerColumn * columns;
 
-    // ★確認用ログ
+
     console.log({
         width: width,
         height: height,
@@ -114,6 +122,7 @@ function calculateCharsPerPage(){
         columns: columns,
         charsPerPage: result
     });
+
 
     return result;
 }
