@@ -78,7 +78,7 @@ body{
 #backCover {
     width: min(45vw, 700px);
     aspect-ratio: 1 / 1.45;
-    background: #faf3d7;
+    background: #fff8e7;
     color:#000;
     display:flex;
     flex-direction:column;
