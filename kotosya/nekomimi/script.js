@@ -21,6 +21,9 @@ const cover =
 const pagesArea =
     document.getElementById("pages");
 
+const pageSize =
+    calculateCharsPerPage();
+
 const backCover =
     document.getElementById("backCover");
 
@@ -71,6 +74,7 @@ function isMobile(){
   画面サイズ計測
 ========================================= */
 function calculateCharsPerPage(){
+
     const page =
         document.querySelector(".pageContent");
     if(!page){
@@ -80,67 +84,51 @@ function calculateCharsPerPage(){
         window.getComputedStyle(page);
     const fontSize =
         parseFloat(style.fontSize);
-    const lineHeight =
-        parseFloat(style.lineHeight);
     const width =
         page.clientWidth;
     const height =
         page.clientHeight;
-    // 縦書きなので
-    // 高さ÷文字サイズ＝1列文字数
+
+    // 1列に入る文字数
     const charsPerColumn =
         Math.floor(
             height / fontSize
         );
 
-    // 幅÷行間＝列数
+    // 横方向の列数
     const columns =
         Math.floor(
-            width / lineHeight
+            width / fontSize
         );
+
     return (
         charsPerColumn *
         columns
     );
 }
 
-
 /* =========================================
   自動ページ振り分け
 ========================================= */
 function createPages(text){
-    novelPages = [];
-    let buffer = "";
-    let inQuote = false;
+
+    novelPages=[];
+    let buffer="";
+    const pageSize =
+        calculateCharsPerPage();
+
     for(let char of text){
 
-        if(char === "「"){
-            inQuote = true;
-        }
-        if(char === "」"){
-            inQuote = false;
-        }
-
-        // 改行をそのまま保持
-        if(char === "\n"){
-            buffer += "\n";
-        }
-        else{
-            buffer += char;
-        }
+        ...
 
         if(
-            buffer.length >= calculateCharsPerPage()
+            buffer.length >= pageSize
             &&
             !inQuote
         ){
             novelPages.push(buffer);
-            buffer = "";
+            buffer="";
         }
-    }
-
-    if(buffer.length > 0){
-        novelPages.push(buffer);
     }
 
     novelPages =
