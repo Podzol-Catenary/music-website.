@@ -24,10 +24,8 @@ const pagesArea =
 const backCover =
     document.getElementById("backCover");
 
-
 const startButton =
     document.getElementById("startButton");
-
 
 const prevButton =
     document.getElementById("prevButton");
@@ -35,13 +33,11 @@ const prevButton =
 const nextButton =
     document.getElementById("nextButton");
 
-
 const rightContent =
     document.getElementById("rightContent");
 
 const leftContent =
     document.getElementById("leftContent");
-
 
 const rightNumber =
     document.getElementById("rightNumber");
@@ -49,7 +45,7 @@ const rightNumber =
 const leftNumber =
     document.getElementById("leftNumber");
 
-const charsPerColumn = 20;
+const charsPerColumn = 28;
 const columnsPerPage = 10;
 
 const charsPerPage =
