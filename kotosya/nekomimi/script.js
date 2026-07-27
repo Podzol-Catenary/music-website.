@@ -267,22 +267,22 @@ function startReading(){
     console.log("startReading開始");
 
     readingStarted = true;
-
     cover.classList.add("hidden");
     pagesArea.classList.remove("hidden");
     backCover.classList.add("hidden");
 
-    requestAnimationFrame(() => {
-
+    // ブラウザのレイアウト確定を待つ
+    setTimeout(()=>{
+        console.log("本文サイズ計測開始");
         createPages(novelText);
-
-        console.log("ページ数:", novelPages.length);
-
+        console.log(
+            "ページ数:",
+            novelPages.length
+        );
         currentPage = 0;
-
         renderPage();
 
-    });
+    },500);
 }
 
 
