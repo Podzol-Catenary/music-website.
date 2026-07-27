@@ -586,6 +586,7 @@ document.addEventListener(
 /* =========================================
    画面サイズ変更対応
 ========================================= */
+let resizeTimer = null;
 
 window.addEventListener(
 "resize",
@@ -593,13 +594,24 @@ window.addEventListener(
     if(!readingStarted){
         return;
     }
-    const position =
-        currentPage;
 
-    createPages(novelText);
-    currentPage =
-        position;
-    renderPage();
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(()=>{
+        console.log("リサイズ再計測");
+        const position =
+            currentPage;
+
+        createPages(novelText);
+
+        currentPage =
+            Math.min(
+                position,
+                totalPages()-1
+            );
+
+        renderPage();
+
+    },300);
 });
 
 /* =========================================
