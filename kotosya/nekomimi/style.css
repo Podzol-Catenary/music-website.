@@ -358,7 +358,7 @@ a{
    スマートフォン
 ========================================= */
 
-@media screen and (max-width:480px){
+@media screen and (max-width:900px){
 
     /* 本全体 */
 
@@ -413,18 +413,15 @@ a{
 
     /* 本文 */
 
-    .pageContent{
+.pageContent{
 
-        font-size:20px;
+    font-size:clamp(
+        16px,
+        4vw,
+        20px
+    );
 
-        line-height:2.05;
-
-        padding:
-
-            34px
-            26px;
-
-    }
+}
 
     /* 矢印 */
 
@@ -463,19 +460,13 @@ a{
 ========================================= */
 
 @media screen and (max-width:480px){
-
-    .pageContent{
-
-        font-size:18px;
-
-        line-height:1.95;
-
-        padding:
-
-            24px
-            18px;
-
-    }
+.pageContent{
+    font-size:clamp(
+        16px,
+        4vw,
+        20px
+    );
+}
 
     #bookTitle{
 
