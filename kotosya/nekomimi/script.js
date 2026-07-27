@@ -94,54 +94,17 @@ function totalPages(){
 
 function renderPage(){
 
-
-    // 裏表紙表示中なら終了
-
-    if(
-        !backCover.classList.contains("hidden")
-    ){
-
-        return;
-
-    }
-
-
-
-    /*
-        スマホ表示
-        1ページのみ
-    */
-
     if(isMobile()){
-
 
         rightContent.textContent =
             novelPages[currentPage] || "";
 
-
         rightNumber.textContent =
             currentPage + 1;
 
-
-        leftContent.textContent =
-            "";
-
-
-        leftNumber.textContent =
-            "";
-
-
         return;
 
-
     }
-
-
-
-    /*
-        PC表示
-        右・左の2ページ
-    */
 
 
     rightContent.textContent =
@@ -152,29 +115,12 @@ function renderPage(){
         novelPages[currentPage + 1] || "";
 
 
-
     rightNumber.textContent =
         currentPage + 1;
 
 
-
-    if(novelPages[currentPage + 1]){
-
-
-        leftNumber.textContent =
-            currentPage + 2;
-
-
-    }
-    else{
-
-
-        leftNumber.textContent =
-            "";
-
-
-    }
-
+    leftNumber.textContent =
+        currentPage + 2;
 
 }
 
