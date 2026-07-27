@@ -49,27 +49,24 @@ const rightNumber =
 const leftNumber =
     document.getElementById("leftNumber");
 
+const charsPerColumn = 18;
 
+const columnsPerPage = 10;
 
 /* =========================================
    状態管理
 ========================================= */
 
-
 let currentPage = 0;
-
 
 // 読書開始前
 let readingStarted = false;
-
-
 
 /* =========================================
    画面サイズ判定
 ========================================= */
 
 function isMobile(){
-
     return window.innerWidth <= 900;
 
 }
@@ -81,96 +78,65 @@ function isMobile(){
 ========================================= */
 
 function totalPages(){
-
     return novelPages.length;
-
 }
-
-
 
 /* =========================================
    ページ表示
 ========================================= */
 
 function renderPage(){
-
     if(isMobile()){
-
         rightContent.textContent =
             novelPages[currentPage] || "";
-
         rightNumber.textContent =
             currentPage + 1;
-
         return;
-
     }
-
 
     rightContent.textContent =
         novelPages[currentPage] || "";
 
-
     leftContent.textContent =
         novelPages[currentPage + 1] || "";
-
 
     rightNumber.textContent =
         currentPage + 1;
 
-
     leftNumber.textContent =
         currentPage + 2;
-
 }
-
-
 
 /* =========================================
    表紙表示切替
 ========================================= */
 
-
 function startReading(){
 
-
     readingStarted = true;
-
 
     cover.classList.add(
         "hidden"
     );
 
-
     pagesArea.classList.remove(
         "hidden"
     );
-
 
     backCover.classList.add(
         "hidden"
     );
 
-
     currentPage = 0;
 
-
     renderPage();
-
-
 }
-
-
 
 startButton.addEventListener(
 
     "click",
-
     startReading
-
 );
-
-
 
 /* =========================================
    裏表紙表示
@@ -179,41 +145,28 @@ startButton.addEventListener(
 
 function showBackCover(){
 
-
     pagesArea.classList.add(
         "hidden"
     );
-
 
     backCover.classList.remove(
         "hidden"
     );
 
-
 }
-
-
 
 /* =========================================
    本文へ戻る
 ========================================= */
 
-
 function backToReading(){
-
-
     backCover.classList.add(
         "hidden"
     );
-
-
     pagesArea.classList.remove(
         "hidden"
     );
-
-
     renderPage();
-
 
 }
 
@@ -223,36 +176,24 @@ function backToReading(){
 
 function nextPage(){
 
-
     // 読書開始前は動作させない
 
     if(!readingStarted){
-
         return;
-
     }
-
-
 
     /*
         裏表紙表示中の場合
-
         最後なので何もしない
     */
-
     if(
         !backCover.classList.contains("hidden")
     ){
-
         return;
-
     }
-
-
 
     /*
         スマホ
-
         1ページずつ進む
     */
 
@@ -265,50 +206,26 @@ function nextPage(){
             currentPage++;
 
             renderPage();
-
-
         }
         else{
-
-
             showBackCover();
-
-
         }
-
-
         return;
-
     }
-
-
 
     /*
         PC
-
         見開き2ページずつ進む
     */
 
 
     if(currentPage + 2 < totalPages()){
-
-
         currentPage += 2;
-
-
         renderPage();
-
-
     }
     else{
-
-
         showBackCover();
-
-
     }
-
-
 }
 
 
@@ -319,7 +236,6 @@ function nextPage(){
 
 function prevPage(){
 
-
     /*
         裏表紙から戻る
     */
@@ -327,102 +243,55 @@ function prevPage(){
     if(
         !backCover.classList.contains("hidden")
     ){
-
         backToReading();
-
         return;
-
     }
-
-
 
     if(!readingStarted){
-
         return;
-
     }
-
-
-
     /*
         スマホ
-
         1ページ戻る
     */
 
     if(isMobile()){
 
-
         if(currentPage > 0){
-
-
             currentPage--;
-
             renderPage();
-
-
         }
 
-
         return;
-
     }
-
-
-
     /*
         PC
-
         2ページ戻る
     */
 
-
     if(currentPage >= 2){
-
-
         currentPage -= 2;
-
-
         renderPage();
-
-
     }
-
-
 }
-
-
 
 /* =========================================
    矢印ボタン
 ========================================= */
 
 nextButton.addEventListener(
-
     "click",
-
     ()=>{
-
         prevPage();
-
     }
-
 );
-
-
 
 prevButton.addEventListener(
-
     "click",
-
     ()=>{
-
         nextPage();
-
     }
-
 );
-
 
 
 /* =========================================
@@ -432,32 +301,20 @@ prevButton.addEventListener(
    めくる場合に利用
 ========================================= */
 
-
 rightContent.addEventListener(
 
     "click",
-
     ()=>{
-
         nextPage();
-
     }
-
 );
-
 
 leftContent.addEventListener(
-
     "click",
-
     ()=>{
-
         prevPage();
-
     }
-
 );
-
 
 /* =========================================
    キーボード操作
@@ -466,140 +323,79 @@ leftContent.addEventListener(
    → 次ページ
 ========================================= */
 
-
 document.addEventListener(
-
     "keydown",
-
     (event)=>{
-
-
         if(
             event.key === "ArrowRight"
         ){
-
             nextPage();
-
         }
-
-
-
         if(
             event.key === "ArrowLeft"
         ){
-
             prevPage();
-
         }
-
-
     }
-
 );
-
-
 
 /* =========================================
    スワイプ操作
 ========================================= */
 
-
 let touchStartX = 0;
-
 let touchEndX = 0;
 
-
-
 document.addEventListener(
-
     "touchstart",
-
     (event)=>{
-
 
         touchStartX =
             event.changedTouches[0].screenX;
-
-
     },
 
     {
         passive:true
     }
-
 );
 
-
-
 document.addEventListener(
-
     "touchend",
-
     (event)=>{
-
-
         touchEndX =
             event.changedTouches[0].screenX;
 
-
-
         swipeCheck();
-
-
     },
-
     {
         passive:true
     }
-
 );
 
-
-
-
 function swipeCheck(){
-
-
     const distance =
         touchStartX - touchEndX;
 
-
-
     /*
         左へスワイプ
-
         次ページ
     */
 
     if(distance > 50){
 
-
         nextPage();
-
-
     }
-
-
 
     /*
         右へスワイプ
-
         前ページ
     */
 
-
     if(distance < -50){
-
-
         prevPage();
 
-
     }
-
-
 }
-
-
 
 /* =========================================
    画面タップ操作
@@ -610,93 +406,51 @@ function swipeCheck(){
    スマホ向け
 ========================================= */
 
-
 document.addEventListener(
-
     "click",
-
     (event)=>{
 
-
         if(!isMobile()){
-
             return;
-
         }
-
-
 
         /*
             表紙のボタン操作は除外
         */
 
-
         if(
             event.target === startButton
         ){
-
             return;
-
         }
-
-
 
         const x =
             event.clientX;
 
-
-
         const width =
             window.innerWidth;
 
-
-
         if(x < width / 2){
-
-
             prevPage();
-
-
         }
         else{
-
-
             nextPage();
-
-
         }
-
-
     }
-
 );
-
-
 
 /* =========================================
    画面サイズ変更対応
 ========================================= */
 
-
 window.addEventListener(
-
     "resize",
-
     ()=>{
-
-
         if(!readingStarted){
-
             return;
-
         }
-
-
         renderPage();
-
-
     }
-
 );
 
 /* =========================================
@@ -705,27 +459,17 @@ window.addEventListener(
 
 function updateViewerState(){
 
-
     /*
         表紙表示中
     */
 
     if(!readingStarted){
-
-
         prevButton.style.display =
             "none";
-
-
         nextButton.style.display =
             "none";
-
-
         return;
-
     }
-
-
 
     /*
         裏表紙表示中
@@ -734,21 +478,12 @@ function updateViewerState(){
     if(
         !backCover.classList.contains("hidden")
     ){
-
-
         nextButton.style.display =
             "none";
-
-
         prevButton.style.display =
             "block";
-
-
         return;
-
     }
-
-
 
     /*
         本文表示中
@@ -757,15 +492,68 @@ function updateViewerState(){
 
     prevButton.style.display =
         "block";
-
-
     nextButton.style.display =
         "block";
 
-
-
 }
 
+/* =========================================
+  自動ページ振り分け
+========================================= */
+
+let novelPages = [];
+
+function createPages(text){
+
+    let lines = [];
+    let current = "";
+   
+    /*
+      縦書きなので
+      改行単位を考慮
+    */
+
+    for(
+        let char of text
+    ){
+        current += char;
+
+        if(
+            current.length >= charsPerColumn
+            ||
+            char === "\n"
+        ){
+            lines.push(current);
+            current="";
+        }
+    }
+
+
+    if(current){
+        lines.push(current);
+    }
+
+
+    /*
+       何行で1ページか
+    */
+
+    for(
+        let i=0;
+        i<lines.length;
+        i+=columnsPerPage
+    ){
+
+        novelPages.push(
+            lines
+            .slice(
+                i,
+                i+columnsPerPage
+            )
+            .join("")
+        );
+    }
+}
 
 
 /* =========================================
@@ -775,25 +563,13 @@ function updateViewerState(){
    状態更新するための処理
 ========================================= */
 
-
 const originalRenderPage =
     renderPage;
-
-
-
 renderPage = function(){
-
-
     originalRenderPage();
-
-
     updateViewerState();
 
-
 };
-
-
-
 
 
 /* =========================================
@@ -802,32 +578,15 @@ renderPage = function(){
 
 
 function normalizePage(){
-
-
     if(currentPage < 0){
-
-
         currentPage = 0;
-
-
     }
-
-
 
     if(currentPage >= totalPages()){
-
-
         currentPage =
             totalPages() - 1;
-
-
     }
-
-
-
 }
-
-
 
 /* =========================================
    読書位置保存準備
@@ -838,46 +597,24 @@ function normalizePage(){
 
 
 function savePosition(){
-
-
     localStorage.setItem(
-
         "novel_position",
-
         currentPage
-
     );
-
-
 }
 
 
-
-
 function loadPosition(){
-
-
     const saved =
 
         localStorage.getItem(
             "novel_position"
         );
-
-
-
     if(saved !== null){
-
-
         currentPage =
             Number(saved);
-
-
     }
-
-
 }
-
-
 
 
 /* =========================================
@@ -889,97 +626,54 @@ function loadPosition(){
 
 const originalNextPage =
     nextPage;
-
-
 nextPage = function(){
-
-
     originalNextPage();
-
-
     normalizePage();
-
-
     savePosition();
-
-
 };
-
-
-
 
 const originalPrevPage =
     prevPage;
-
-
 prevPage = function(){
-
-
     originalPrevPage();
-
-
     normalizePage();
-
-
     savePosition();
-
-
 };
-
-
-
 
 
 /* =========================================
    初期化
 ========================================= */
 
-
-function initializeViewer(){
-
-
+createPages(novelText);
+initializeViewer();
     /*
         初期状態
-
         表紙表示
     */
-
 
     cover.classList.remove(
         "hidden"
     );
 
-
     pagesArea.classList.add(
         "hidden"
     );
-
 
     backCover.classList.add(
         "hidden"
     );
 
-
-
     readingStarted = false;
-
-
 
     currentPage = 0;
 
-
-
     updateViewerState();
 
-
-
 }
-
-
 
 /* =========================================
    起動
 ========================================= */
-
 
 initializeViewer();
