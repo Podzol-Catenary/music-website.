@@ -132,36 +132,52 @@ function calculateCharsPerPage(){
 ========================================= */
 function createPages(text){
 
-    novelPages=[];
-    let buffer="";
+    novelPages = [];
+
+    let buffer = "";
+
+    // ← これを追加
+    let inQuote = false;
+
+
     const pageSize =
         calculateCharsPerPage();
 
-    for(let char of text){
-       
-if(char === "「"){ 
-   inQuote = true; 
-} 
-if(char === "」"){ 
-   inQuote = false; 
-} 
-// 改行をそのまま保持 
-if(char === "\n"){ 
-   buffer += "\n"; 
-} 
-else{
-   buffer += char; 
-}
 
- if(
-   buffer.length >= pageSize
-    &&
-    !inQuote
-){
-    novelPages.push(buffer);
-    buffer="";
-   }
-}
+    for(let char of text){
+
+        if(char === "「"){
+            inQuote = true;
+        }
+
+        if(char === "」"){
+            inQuote = false;
+        }
+
+
+        if(char === "\n"){
+            buffer += "\n";
+        }
+        else{
+            buffer += char;
+        }
+
+
+        if(
+            buffer.length >= pageSize
+            &&
+            !inQuote
+        ){
+            novelPages.push(buffer);
+            buffer = "";
+        }
+    }
+
+
+    if(buffer.length > 0){
+        novelPages.push(buffer);
+    }
+
 
     novelPages =
         applyKinsoku(novelPages);
