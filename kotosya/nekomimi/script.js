@@ -263,50 +263,34 @@ function renderPage(){
   表示切替
 ========================================= */
 function startReading(){
-
     readingStarted = true;
-
     cover.classList.add("hidden");
-
     pagesArea.classList.remove("hidden");
-
     backCover.classList.add("hidden");
 
+    // 表示反映を待つ
+    requestAnimationFrame(()=>{
+        requestAnimationFrame(()=>{
+            console.log("計測開始");
+            createPages(novelText);
+            console.log(
+                "ページ数:",
+                novelPages.length
+            );
+            currentPage = 0;
+            renderPage();
 
-    currentPage = 0;
-
-
-    // 表示状態になった後で計測
-    setTimeout(()=>{
-
-        console.log("startReading開始");
-
-        console.log(
-            "pagesサイズ:",
-            pagesArea.getBoundingClientRect()
-        );
-
-        console.log(
-            "pageContentサイズ:",
-            document.querySelector(".pageContent").getBoundingClientRect()
-        );
-
-
-        createPages(novelText);
-
-
-        console.log(
-            "作成ページ数:",
-            novelPages.length
-        );
-
-
-        renderPage();
-
-
-    },300);
-
+        });
+    });
 }
+
+startButton.addEventListener(
+    "click",
+    ()=>{
+        console.log("読み始めるボタン押下");
+        startReading();
+    }
+);
 /* =========================================
    裏表紙表示
 ========================================= */
