@@ -257,7 +257,24 @@ function renderPage(){
     leftNumber.textContent =
         currentPage + 2;
 }
+/* =========================================
+  表示切替
+========================================= */
+function startReading(){
 
+    readingStarted = true;
+
+    cover.classList.add("hidden");
+    pagesArea.classList.remove("hidden");
+    backCover.classList.add("hidden");
+
+    // レイアウトが反映された次の描画タイミングで計測
+    requestAnimationFrame(() => {
+        createPages(novelText);
+        currentPage = 0;
+        renderPage();
+    });
+}
 /* =========================================
    裏表紙表示
 ========================================= */
