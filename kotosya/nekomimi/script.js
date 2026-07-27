@@ -261,7 +261,12 @@ function renderPage(){
   表示切替
 ========================================= */
 function startReading(){
-
+   
+    startButton.addEventListener(
+    "click",
+    startReading
+    );
+   
     readingStarted = true;
 
     cover.classList.add("hidden");
