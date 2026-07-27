@@ -135,56 +135,44 @@ for(
         .join("")
     );
 
-
    
 // 禁則処理
-novelPages =
-    applyKinsoku(tempPages);
-    }
-}
-
 function applyKinsoku(pages){
-    // ページ先頭に置かない文字
     const prohibitedStart = [
         "。",
         "、",
-        "．",
-        "，",
         "」",
         "』",
         "）",
-        "］",
-        "】",
-        "〉",
-        "》",
-        "〕",
         "！",
-        "？",
-        "」",
-        "』"
+        "？"
     ];
 
     for(
-        let i = 1;
-        i < pages.length;
+        let i=1;
+        i<pages.length;
         i++
     ){
+
+        if(!pages[i]){
+            continue;
+        }
+
         let firstChar =
             pages[i].charAt(0);
+
         if(
             prohibitedStart.includes(firstChar)
         ){
-            // 前ページ末尾へ移動
             pages[i-1] += firstChar;
-
-            // 現ページから削除
             pages[i] =
                 pages[i].substring(1);
-      }
+        }
     }
     return pages;
-　}
+   }
 }
+      
 /* =========================================
    ページ総数取得
 ========================================= */
