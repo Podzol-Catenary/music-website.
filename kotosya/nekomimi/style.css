@@ -74,7 +74,7 @@ body{
    表紙・裏表紙
 ========================================= */
 
-#cover 
+#cover,
 #backCover {
     width: min(45vw, 700px);
     aspect-ratio: 1 / 1.45;
@@ -407,9 +407,10 @@ a{
         height:98%;
     }
 
-    .cover{
-        width:96%;
-        height:96%;
+   .cover{
+    width:96%;
+    height:auto;
+    aspect-ratio:1 / 1.45;
     }
 
     .pageContent{
