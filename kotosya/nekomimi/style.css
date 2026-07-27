@@ -159,13 +159,11 @@ body{
 ========================================= */
 
 #pages {
-
     display:flex;
-
     justify-content:center;
-
+    align-items:center;
     gap:20px;
-
+    min-height:100vh;
 }
 
 /* =========================================
@@ -173,32 +171,31 @@ body{
 ========================================= */
 
 .page {
-
+    width: min(42vw, 420px);
     aspect-ratio: 1 / 1.45;
-
-    background:white;
-
-    position:relative;
-
+    background:#fff;
+    color:#000;
     overflow:hidden;
-
+    position:relative;
 }
 
 /* =========================================
    本文
 ========================================= */
 .pageContent {
-
-    writing-mode:vertical-rl;
-
-    text-orientation:mixed;
-    line-height:2;
-
-    height:100%;
     width:100%;
-    padding:
-    8% 12% 8% 15%;
-
+    height:100%;
+    box-sizing:border-box;
+    writing-mode:vertical-rl;
+    text-orientation:mixed;
+    font-family:
+        "Yu Mincho",
+        "Hiragino Mincho ProN",
+        serif;
+    font-size:clamp(14px, 2vw, 24px);
+    line-height:2;
+    padding:8%;
+    overflow:hidden;
 }
 
 /* =========================================
