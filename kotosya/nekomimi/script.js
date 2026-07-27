@@ -21,9 +21,6 @@ const cover =
 const pagesArea =
     document.getElementById("pages");
 
-const pageSize =
-    calculateCharsPerPage();
-
 const backCover =
     document.getElementById("backCover");
 
@@ -104,10 +101,8 @@ function calculateCharsPerPage(){
             height / fontSize
         );
 
-    const columns =
-        Math.floor(
-            width / lineHeight
-        );
+const columns =
+    Math.floor(width / fontSize);
 
     const result =
         charsPerColumn * columns;
@@ -262,37 +257,6 @@ function renderPage(){
     leftNumber.textContent =
         currentPage + 2;
 }
-
-/* =========================================
-   表紙表示切替
-========================================= */
-
-function startReading(){
-
-    readingStarted = true;
-
-    cover.classList.add(
-        "hidden"
-    );
-
-    pagesArea.classList.remove(
-        "hidden"
-    );
-
-    backCover.classList.add(
-        "hidden"
-    );
-
-    currentPage = 0;
-
-    renderPage();
-}
-
-startButton.addEventListener(
-
-    "click",
-    startReading
-);
 
 /* =========================================
    裏表紙表示
@@ -744,8 +708,6 @@ function initializeViewer(){
    起動
 ========================================= */
 initializeViewer();
-setTimeout(()=>{
-    createPages(novelText);
-},100);
+
 
 
