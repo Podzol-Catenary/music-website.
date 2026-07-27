@@ -171,12 +171,14 @@ body{
 ========================================= */
 
 .page {
-    width: min(42vw, 420px);
+
+    width: min(45vw, 600px);
     aspect-ratio: 1 / 1.45;
     background:#fff;
     color:#000;
     overflow:hidden;
     position:relative;
+
 }
 
 /* =========================================
