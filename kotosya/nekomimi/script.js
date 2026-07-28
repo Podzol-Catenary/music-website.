@@ -127,16 +127,12 @@ function canFitText(
     text
 ){
 
-    measure.textContent =
-        text;
+    measure.textContent = text;
 
 
     return (
-        measure.scrollWidth <=
-        measure.clientWidth
-        &&
-        measure.scrollHeight <=
-        measure.clientHeight
+        measure.scrollWidth <= measure.clientWidth &&
+        measure.scrollHeight <= measure.clientHeight
     );
 
 }
@@ -309,7 +305,9 @@ console.log(
             current
         );
     }
-　　　measure.parentElement.remove();
+if(measure.parentElement){
+    measure.parentElement.remove();
+}
 
     /*
        禁則処理
