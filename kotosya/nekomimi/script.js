@@ -130,44 +130,74 @@ function createPages(text){
 
     novelPages = [];
 
-    const measure =
-        document.createElement("div");
+    const sample =
+        document.getElementById("rightContent");
 
-    measure.className = "pageContent";
+    // 測定用
+    const measure =
+        sample.cloneNode(false);
 
     measure.style.position = "absolute";
     measure.style.visibility = "hidden";
     measure.style.pointerEvents = "none";
+    measure.style.left = "-99999px";
+    measure.style.top = "0";
+
+    // 実際のページと同じサイズ
+    measure.style.width =
+        sample.clientWidth + "px";
+
+    measure.style.height =
+        sample.clientHeight + "px";
 
     document.body.appendChild(measure);
 
     let buffer = "";
+    let inQuote = false;
 
     for(const ch of text){
 
+        if(ch === "「"){
+            inQuote = true;
+        }
+
         measure.textContent = buffer + ch;
 
-        if(measure.scrollWidth > measure.clientWidth){
+        const overflow =
+            measure.scrollWidth >
+            measure.clientWidth;
+
+        if(overflow && !inQuote){
 
             novelPages.push(buffer);
 
             buffer = ch;
 
-        }else{
+            measure.textContent = buffer;
+        }
+        else{
 
             buffer += ch;
 
         }
+
+        if(ch === "」"){
+            inQuote = false;
+        }
+
     }
 
-    if(buffer){
+    if(buffer.length){
+
         novelPages.push(buffer);
+
     }
 
     document.body.removeChild(measure);
 
     novelPages =
         applyKinsoku(novelPages);
+
 }
 /* =========================================
    禁則処理
