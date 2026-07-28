@@ -163,8 +163,8 @@ function createPages(text){
                     index + mid
                 );
             const overflow =
-                measure.scrollWidth >
-                measure.clientWidth;
+            measure.scrollWidth > measure.clientWidth ||
+            measure.scrollHeight > measure.clientHeight;
             if(!overflow){
                 best = mid;
                 low = mid + 1;
