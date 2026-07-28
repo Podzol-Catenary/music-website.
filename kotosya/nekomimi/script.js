@@ -145,6 +145,14 @@ function createPages(text){
     measure.style.height =
         sample.clientHeight + "px";
     document.body.appendChild(measure);
+
+   console.log(
+    measure.clientWidth,
+    measure.clientHeight,
+    measure.scrollWidth,
+    measure.scrollHeight
+);
+   
     let index = 0;
     while(index < text.length){
         let low = 1;
