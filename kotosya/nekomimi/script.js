@@ -101,20 +101,17 @@ function createMeasureElement(){
         "none";
 
 
-    // 実際のページサイズをコピー
-
+    /*
+       実際のページと同じ大きさ
+    */
     measure.style.width =
-        original.clientWidth + "px";
-
+        page.clientWidth + "px";
     measure.style.height =
-        original.clientHeight + "px";
-
+        page.clientHeight + "px";
 
     document.body.appendChild(
         measure
     );
-
-
     return measure;
 
 }
@@ -126,19 +123,13 @@ function canFitText(
     measure,
     text
 ){
-
     measure.textContent =
         text;
 
-
-    return !(
-        measure.scrollWidth >
-        measure.clientWidth
-        ||
-        measure.scrollHeight >
+    return (
+        measure.scrollHeight <=
         measure.clientHeight
     );
-
 }
 
 /* =========================================
@@ -155,7 +146,6 @@ function createPages(text){
     /*
        空行2つ以上を段落として扱う
     */
-
     const paragraphs =
         text
         .split(/\n\s*\n/)
@@ -197,7 +187,6 @@ function createPages(text){
           現在ページを保存
         */
         if(current.length > 0){
-
             novelPages.push(
                 current
             );
