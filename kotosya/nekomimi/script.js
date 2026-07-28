@@ -74,37 +74,51 @@ function createMeasureElement(){
 
     const page =
         document.getElementById("rightPage");
-    const wrapper =
-        document.createElement("div");
-    wrapper.style.position =
-        "fixed";
-    wrapper.style.left =
-        "-10000px";
-    wrapper.style.top =
-        "0";
-    wrapper.style.visibility =
-        "hidden";
-    wrapper.style.pointerEvents =
-        "none";
-    wrapper.style.width =
-        page.clientWidth + "px";
-    wrapper.style.height =
-        page.clientHeight + "px";
-    wrapper.style.overflow =
-        "hidden";
+
+
     const measure =
         document.createElement("div");
+
+
     measure.className =
         "pageContent";
-    wrapper.appendChild(
+
+
+    measure.style.position =
+        "fixed";
+
+    measure.style.left =
+        "-10000px";
+
+    measure.style.top =
+        "0";
+
+    measure.style.visibility =
+        "hidden";
+
+    measure.style.pointerEvents =
+        "none";
+
+
+    measure.style.width =
+        page.clientWidth + "px";
+
+    measure.style.height =
+        page.clientHeight + "px";
+
+
+    measure.style.overflow =
+        "visible";
+
+
+    document.body.appendChild(
         measure
     );
-    document.body.appendChild(
-        wrapper
-    );
-    return measure;
-}
 
+
+    return measure;
+
+}
 /* =========================================
    表示可能判定
 ========================================= */
@@ -112,22 +126,19 @@ function canFitText(
     measure,
     text
 ){
+
     measure.textContent =
         text;
 
-    const width =
-        measure.scrollWidth;
-    const height =
-        measure.scrollHeight;
-    const limitWidth =
-        measure.parentElement.clientWidth;
-    const limitHeight =
-        measure.parentElement.clientHeight;
 
     return (
-        width <= limitWidth &&
-        height <= limitHeight
+        measure.scrollWidth <=
+        measure.clientWidth
+        &&
+        measure.scrollHeight <=
+        measure.clientHeight
     );
+
 }
 /* =========================================
    自動ページ振り分け
