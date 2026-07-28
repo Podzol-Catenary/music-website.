@@ -129,11 +129,8 @@ const result =
 function createPages(text){
 
     novelPages = [];
-
     const sample =
         document.getElementById("rightContent");
-
-    // 測定用
     const measure =
         sample.cloneNode(false);
 
@@ -143,61 +140,67 @@ function createPages(text){
     measure.style.left = "-99999px";
     measure.style.top = "0";
 
-    // 実際のページと同じサイズ
     measure.style.width =
         sample.clientWidth + "px";
-
     measure.style.height =
         sample.clientHeight + "px";
-
     document.body.appendChild(measure);
+    let index = 0;
+    while(index < text.length){
+        let low = 1;
+        let high = Math.min(
+            1000,
+            text.length - index
+        );
+        let best = 1;
+        while(low <= high){
+            const mid =
+                Math.floor((low + high) / 2);
 
-    let buffer = "";
-    let inQuote = false;
-
-    for(const ch of text){
-
-        if(ch === "「"){
-            inQuote = true;
+            measure.textContent =
+                text.substring(
+                    index,
+                    index + mid
+                );
+            const overflow =
+                measure.scrollWidth >
+                measure.clientWidth;
+            if(!overflow){
+                best = mid;
+                low = mid + 1;
+            }else{
+                high = mid - 1;
+            }
         }
-
-        measure.textContent = buffer + ch;
-
-        const overflow =
-            measure.scrollWidth >
-            measure.clientWidth;
-
-        if(overflow && !inQuote){
-
-            novelPages.push(buffer);
-
-            buffer = ch;
-
-            measure.textContent = buffer;
+        // 会話文の途中では切らない
+        while(
+            best > 1
+        ){
+            const page =
+                text.substring(
+                    index,
+                    index + best
+                );
+            const left =
+                (page.match(/「/g) || []).length;
+            const right =
+                (page.match(/」/g) || []).length;
+            if(left === right){
+                break;
+            }
+            best--;
         }
-        else{
-
-            buffer += ch;
-
-        }
-
-        if(ch === "」"){
-            inQuote = false;
-        }
-
+        novelPages.push(
+            text.substring(
+                index,
+                index + best
+            )
+        );
+        index += best;
     }
-
-    if(buffer.length){
-
-        novelPages.push(buffer);
-
-    }
-
     document.body.removeChild(measure);
-
     novelPages =
         applyKinsoku(novelPages);
-
 }
 /* =========================================
    禁則処理
