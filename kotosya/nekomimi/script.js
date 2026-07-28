@@ -410,7 +410,12 @@ function renderPage(){
 
     rightContent.textContent =
         novelPages[currentPage] || "";
-
+   
+    console.log(
+        "描画後",
+        rightContent.textContent
+    );
+   
     leftContent.textContent =
         novelPages[currentPage + 1] || "";
 
