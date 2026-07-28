@@ -73,15 +73,10 @@ function isMobile(){
 function calculateCharsPerPage(){
 
 const page =
-    document.querySelector(".page");
+    document.querySelector(".pageContent");
 
-    if(!page){
-        console.log("pageContentがありません");
-        return 200;
-    }
-
-    const style =
-        window.getComputedStyle(page);
+const style =
+    getComputedStyle(page);
 
     const fontSize =
         parseFloat(style.fontSize);
