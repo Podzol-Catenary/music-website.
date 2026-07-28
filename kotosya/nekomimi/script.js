@@ -70,41 +70,37 @@ function isMobile(){
 /* =========================================
    ページ計測用要素作成
 ========================================= */
-
 function createMeasureElement(){
 
     const page =
         document.getElementById("rightPage");
-   　console.log(
-        "ページサイズ",
-        page.clientWidth,
-        page.clientHeight
-    );
+    const wrapper =
+        document.createElement("div");
+    wrapper.style.position =
+        "fixed";
+    wrapper.style.left =
+        "-10000px";
+    wrapper.style.top =
+        "0";
+    wrapper.style.visibility =
+        "hidden";
+    wrapper.style.pointerEvents =
+        "none";
+    wrapper.style.width =
+        page.clientWidth + "px";
+    wrapper.style.height =
+        page.clientHeight + "px";
+    wrapper.style.overflow =
+        "hidden";
     const measure =
         document.createElement("div");
-
     measure.className =
         "pageContent";
-    measure.style.position =
-        "fixed";
-    measure.style.left =
-        "-10000px";
-    measure.style.top =
-        "0";
-    measure.style.visibility =
-        "hidden";
-    measure.style.pointerEvents =
-        "none";
-
-    /*
-       実際のページと同じ大きさ
-    */
-    measure.style.width =
-        page.clientWidth + "px";
-    measure.style.height =
-        page.clientHeight + "px";
-    document.body.appendChild(
+    wrapper.appendChild(
         measure
+    );
+    document.body.appendChild(
+        wrapper
     );
     return measure;
 }
@@ -112,36 +108,37 @@ function createMeasureElement(){
 /* =========================================
    表示可能判定
 ========================================= */
-
 function canFitText(
     measure,
     text
 ){
+
     measure.textContent =
         text;
 
-    return (
-        measure.scrollHeight <=
-        measure.clientHeight
-    );
-}
 
+    return (
+        measure.scrollWidth <=
+        measure.parentElement.clientWidth
+        &&
+        measure.scrollHeight <=
+        measure.parentElement.clientHeight
+    );
+
+}
 /* =========================================
    自動ページ振り分け
    段落単位 + 二分探索方式
 ========================================= */
-
 function createPages(text){
 
     novelPages = [];
     const measure =
         createMeasureElement();
-
     /*
        空行2つ以上を段落として扱う
     */
 let paragraphs = [];
-
 if(typeof text === "string"){
 
     paragraphs =
@@ -289,6 +286,21 @@ console.log(
         applyKinsoku(
             novelPages
         );
+
+   console.log(
+    "作成ページ数:",
+    novelPages.length
+);
+
+console.log(
+    "1ページ文字数:",
+    novelPages[0].length
+);
+
+console.log(
+    "2ページ文字数:",
+    novelPages[1]?.length
+);
 }
 /* =========================================
    禁則処理
