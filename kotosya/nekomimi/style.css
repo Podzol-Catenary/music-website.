@@ -253,6 +253,8 @@ body{
     box-sizing:border-box;
     overflow:hidden;
     white-space:pre-wrap;
+
+   overflow-wrap: break-word;
 }
 
 /* =========================================
