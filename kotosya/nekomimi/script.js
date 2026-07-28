@@ -75,7 +75,11 @@ function createMeasureElement(){
 
     const page =
         document.getElementById("rightPage");
-
+   　console.log(
+        "ページサイズ",
+        page.clientWidth,
+        page.clientHeight
+    );
     const measure =
         document.createElement("div");
 
