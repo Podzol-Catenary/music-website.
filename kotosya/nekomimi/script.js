@@ -73,33 +73,24 @@ function isMobile(){
 
 function createMeasureElement(){
 
-    const original =
-        document.getElementById("rightContent");
-
+    const page =
+        document.getElementById("rightPage");
 
     const measure =
         document.createElement("div");
 
-
     measure.className =
         "pageContent";
-
-
     measure.style.position =
         "fixed";
-
     measure.style.left =
         "-10000px";
-
     measure.style.top =
         "0";
-
     measure.style.visibility =
         "hidden";
-
     measure.style.pointerEvents =
         "none";
-
 
     /*
        実際のページと同じ大きさ
@@ -108,13 +99,12 @@ function createMeasureElement(){
         page.clientWidth + "px";
     measure.style.height =
         page.clientHeight + "px";
-
     document.body.appendChild(
         measure
     );
     return measure;
-
 }
+
 /* =========================================
    表示可能判定
 ========================================= */
