@@ -297,7 +297,6 @@ console.log(
     measure.clientWidth,
     measure.clientHeight
 );
-);
    
     if(
         current.length > 0
