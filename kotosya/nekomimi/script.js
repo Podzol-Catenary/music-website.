@@ -135,46 +135,41 @@ function createPages(text){
 
     novelPages = [];
 
+    const measure =
+        document.createElement("div");
+
+    measure.className = "pageContent";
+
+    measure.style.position = "absolute";
+    measure.style.visibility = "hidden";
+    measure.style.pointerEvents = "none";
+
+    document.body.appendChild(measure);
+
     let buffer = "";
-    let inQuote = false;
 
-    const pageSize =
-        calculateCharsPerPage();
+    for(const ch of text){
 
-    for(let char of text){
+        measure.textContent = buffer + ch;
 
-        if(char === "「"){
-            inQuote = true;
-        }
+        if(measure.scrollWidth > measure.clientWidth){
 
-        if(char === "」"){
-            inQuote = false;
-        }
-
-
-        if(char === "\n"){
-            buffer += "\n";
-        }
-        else{
-            buffer += char;
-        }
-
-
-        if(
-            buffer.length >= pageSize
-            &&
-            !inQuote
-        ){
             novelPages.push(buffer);
-            buffer = "";
+
+            buffer = ch;
+
+        }else{
+
+            buffer += ch;
+
         }
     }
 
-
-    if(buffer.length > 0){
+    if(buffer){
         novelPages.push(buffer);
     }
 
+    document.body.removeChild(measure);
 
     novelPages =
         applyKinsoku(novelPages);
