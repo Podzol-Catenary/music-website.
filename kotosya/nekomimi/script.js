@@ -74,7 +74,14 @@ function createMeasureElement(){
 
     const page =
         document.getElementById("rightPage");
+if(!page){
 
+    console.error(
+        "rightPage が見つかりません"
+    );
+
+    return null;
+}
 
     const measure =
         document.createElement("div");
@@ -127,6 +134,10 @@ function canFitText(
     text
 ){
 
+    if(!measure){
+        return false;
+    }
+
     measure.textContent = text;
 
 
@@ -145,17 +156,7 @@ function createPages(text){
     novelPages = [];
    
 const measure =
-    document.createElement("div");
-
-measure.className =
-    "pageContent";
-
-measure.style.overflow =
-    "visible";
-
-measure.style.position =
-    "relative";
-   
+    createMeasureElement();
     /*
        空行2つ以上を段落として扱う
     */
@@ -289,13 +290,13 @@ console.log(
     /*
        最後のページ
     */
-
-   console.log(
+console.log(
     "測定結果",
     measure.scrollWidth,
     measure.scrollHeight,
-    measure.parentElement.clientWidth,
-    measure.parentElement.clientHeight
+    measure.clientWidth,
+    measure.clientHeight
+);
 );
    
     if(
