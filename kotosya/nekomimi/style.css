@@ -240,6 +240,8 @@ body{
         "Hiragino Mincho ProN",
         serif;
 
+    color:#000;
+
     font-size:clamp(
         16px,
         1.3vw,
