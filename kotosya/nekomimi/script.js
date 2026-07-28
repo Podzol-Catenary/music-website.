@@ -112,19 +112,22 @@ function canFitText(
     measure,
     text
 ){
-
     measure.textContent =
         text;
 
+    const width =
+        measure.scrollWidth;
+    const height =
+        measure.scrollHeight;
+    const limitWidth =
+        measure.parentElement.clientWidth;
+    const limitHeight =
+        measure.parentElement.clientHeight;
 
     return (
-        measure.scrollWidth <=
-        measure.parentElement.clientWidth
-        &&
-        measure.scrollHeight <=
-        measure.parentElement.clientHeight
+        width <= limitWidth &&
+        height <= limitHeight
     );
-
 }
 /* =========================================
    自動ページ振り分け
@@ -133,8 +136,19 @@ function canFitText(
 function createPages(text){
 
     novelPages = [];
-    const measure =
-        createMeasureElement();
+   
+const measure =
+    document.createElement("div");
+
+measure.className =
+    "pageContent";
+
+measure.style.overflow =
+    "visible";
+
+measure.style.position =
+    "relative";
+   
     /*
        空行2つ以上を段落として扱う
     */
@@ -268,6 +282,15 @@ console.log(
     /*
        最後のページ
     */
+
+   console.log(
+    "測定結果",
+    measure.scrollWidth,
+    measure.scrollHeight,
+    measure.parentElement.clientWidth,
+    measure.parentElement.clientHeight
+);
+   
     if(
         current.length > 0
     ){
