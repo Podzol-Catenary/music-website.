@@ -421,8 +421,14 @@ function startReading(){
                 "ページ数:",
                 novelPages.length
             );
-            currentPage = 0;
-            renderPage();
+currentPage = 0;
+
+console.log(
+    "表示開始",
+    novelPages[currentPage]
+);
+
+renderPage();
 
         });
     });
