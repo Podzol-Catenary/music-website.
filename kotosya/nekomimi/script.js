@@ -146,15 +146,29 @@ function createPages(text){
     /*
        空行2つ以上を段落として扱う
     */
-    const paragraphs =
+let paragraphs = [];
+
+if(typeof text === "string"){
+
+    paragraphs =
         text
-        .split(/\n\s*\n/)
-        .map(
-            p => p.trim()
-        )
+        .split(/\r?\n\s*\r?\n/)
+        .map(p => p.trim())
         .filter(
-            p => p.length > 0
+            p => p !== ""
         );
+}
+else{
+    console.error(
+        "novelText が文字列ではありません",
+        text
+    );
+    return;
+}
+console.log(
+    "段落数:",
+    paragraphs.length
+);
     let current = "";
     for(
         let paragraph of paragraphs
