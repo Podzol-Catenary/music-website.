@@ -390,21 +390,41 @@ function totalPages(){
 /* =========================================
    ページ表示
 ========================================= */
-
 function renderPage(){
+
     if(isMobile()){
         rightContent.textContent =
             novelPages[currentPage] || "";
+
         rightNumber.textContent =
             currentPage + 1;
+
+        console.log(
+            "右ページDOM:",
+            rightContent.textContent
+        );
+
         return;
     }
+
 
     rightContent.textContent =
         novelPages[currentPage] || "";
 
     leftContent.textContent =
         novelPages[currentPage + 1] || "";
+
+
+    console.log(
+        "右ページ表示文字:",
+        rightContent.textContent.length
+    );
+
+    console.log(
+        "左ページ表示文字:",
+        leftContent.textContent.length
+    );
+
 
     rightNumber.textContent =
         currentPage + 1;
