@@ -275,9 +275,7 @@ console.log(
             current
         );
     }
-    document.body.removeChild(
-        measure
-    );
+　　　measure.parentElement.remove();
 
     /*
        禁則処理
