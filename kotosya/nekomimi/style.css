@@ -233,7 +233,6 @@ body{
     height:100%;
 
     writing-mode:vertical-rl;
-
     text-orientation:mixed;
 
     font-family:
@@ -241,11 +240,10 @@ body{
         "Hiragino Mincho ProN",
         serif;
 
-
     font-size:clamp(
-      16px,
-      1.3vw,
-      22px
+        16px,
+        1.3vw,
+        22px
     );
 
     line-height:2;
@@ -254,9 +252,7 @@ body{
 
     box-sizing:border-box;
 
-
     overflow:visible;
-
 
     white-space:pre-wrap;
 
