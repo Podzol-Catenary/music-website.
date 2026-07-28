@@ -68,147 +68,230 @@ function isMobile(){
 
 }
 /* =========================================
-  画面サイズ計測
+   ページ計測用要素作成
 ========================================= */
-function calculateCharsPerPage(){
 
-const page =
-    document.querySelector(".pageContent");
+function createMeasureElement(){
 
-const style =
-    getComputedStyle(page);
-
-    const fontSize =
-        parseFloat(style.fontSize);
-
-    const lineHeight =
-        parseFloat(style.lineHeight) || fontSize * 2;
-
-    const width =
-        page.clientWidth;
-
-    const height =
-        page.clientHeight;
+    const original =
+        document.getElementById("rightContent");
 
 
-    const charsPerColumn =
-        Math.floor(
-            height / fontSize
-        );
+    const measure =
+        document.createElement("div");
 
-    const columns =
-        Math.floor(
-        width /
-        (fontSize * 2)
-        );
 
-const safety = 0.5;
+    measure.className =
+        "pageContent";
 
-const result =
-    Math.floor(
-        charsPerColumn * columns * safety
+
+    measure.style.position =
+        "fixed";
+
+    measure.style.left =
+        "-10000px";
+
+    measure.style.top =
+        "0";
+
+    measure.style.visibility =
+        "hidden";
+
+    measure.style.pointerEvents =
+        "none";
+
+
+    // 実際のページサイズをコピー
+
+    measure.style.width =
+        original.clientWidth + "px";
+
+    measure.style.height =
+        original.clientHeight + "px";
+
+
+    document.body.appendChild(
+        measure
     );
 
-    console.log({
-        width: width,
-        height: height,
-        fontSize: fontSize,
-        lineHeight: lineHeight,
-        charsPerColumn: charsPerColumn,
-        columns: columns,
-        charsPerPage: result
-    });
+
+    return measure;
+
+}
+/* =========================================
+   表示可能判定
+========================================= */
+
+function canFitText(
+    measure,
+    text
+){
+
+    measure.textContent =
+        text;
 
 
-    return result;
+    return !(
+        measure.scrollWidth >
+        measure.clientWidth
+        ||
+        measure.scrollHeight >
+        measure.clientHeight
+    );
+
 }
 
 /* =========================================
-  自動ページ振り分け
+   自動ページ振り分け
+   段落単位 + 二分探索方式
 ========================================= */
+
 function createPages(text){
 
     novelPages = [];
-    const sample =
-        document.getElementById("rightContent");
     const measure =
-        sample.cloneNode(false);
+        createMeasureElement();
 
-    measure.style.position = "absolute";
-    measure.style.visibility = "hidden";
-    measure.style.pointerEvents = "none";
-    measure.style.left = "-99999px";
-    measure.style.top = "0";
+    /*
+       空行2つ以上を段落として扱う
+    */
 
-    measure.style.width =
-        sample.clientWidth + "px";
-    measure.style.height =
-        sample.clientHeight + "px";
-    document.body.appendChild(measure);
-
-   console.log(
-    measure.clientWidth,
-    measure.clientHeight,
-    measure.scrollWidth,
-    measure.scrollHeight
-);
-   
-    let index = 0;
-    while(index < text.length){
-        let low = 1;
-        let high = Math.min(
-            1000,
-            text.length - index
+    const paragraphs =
+        text
+        .split(/\n\s*\n/)
+        .map(
+            p => p.trim()
+        )
+        .filter(
+            p => p.length > 0
         );
-        let best = 1;
-        while(low <= high){
-            const mid =
-                Math.floor((low + high) / 2);
+    let current = "";
+    for(
+        let paragraph of paragraphs
+    ){
+       const test =
+            current.length > 0
+            ?
+            current
+            +
+            "\n\n"
+            +
+            paragraph
+            :
+            paragraph;
 
-            measure.textContent =
-                text.substring(
-                    index,
-                    index + mid
-                );
-            const overflow =
-            measure.scrollWidth > measure.clientWidth ||
-            measure.scrollHeight > measure.clientHeight;
-            if(!overflow){
-                best = mid;
-                low = mid + 1;
-            }else{
-                high = mid - 1;
-            }
-        }
-        // 会話文の途中では切らない
-        while(
-            best > 1
-        ){
-            const page =
-                text.substring(
-                    index,
-                    index + best
-                );
-            const left =
-                (page.match(/「/g) || []).length;
-            const right =
-                (page.match(/」/g) || []).length;
-            if(left === right){
-                break;
-            }
-            best--;
-        }
-        novelPages.push(
-            text.substring(
-                index,
-                index + best
+        /*
+          そのまま入る場合
+        */
+        if(
+            canFitText(
+                measure,
+                test
             )
-        );
-        index += best;
+        ){
+            current = test;
+            continue;
+        }
+
+        /*
+          現在ページを保存
+        */
+        if(current.length > 0){
+
+            novelPages.push(
+                current
+            );
+        }
+
+        /*
+          段落そのものが
+          1ページに入らない場合
+        */
+        if(
+            !canFitText(
+                measure,
+                paragraph
+            )
+        ){
+            let start = 0;
+            while(
+                start < paragraph.length
+            ){
+                let low = 1;
+                let high =
+                    paragraph.length -
+                    start;
+                let best = 1;
+
+                /*
+                  二分探索
+                */
+                while(
+                    low <= high
+                ){
+                    const mid =
+                        Math.floor(
+                            (low + high) / 2
+                        );
+                    const part =
+                        paragraph.substring(
+                            start,
+                            start + mid
+                        );
+                    if(
+                        canFitText(
+                            measure,
+                            part
+                        )
+                    ){
+                        best = mid;
+                        low =
+                            mid + 1;
+                    }
+                    else{
+
+                        high =
+                            mid - 1;
+                    }
+                }
+                let pageText =
+                    paragraph.substring(
+                        start,
+                        start + best
+                    );
+                novelPages.push(
+                    pageText
+                );
+                start += best;
+            }
+            current = "";
+        }
+        else{
+            current = paragraph;
+        }
     }
-    document.body.removeChild(measure);
+
+    /*
+       最後のページ
+    */
+    if(
+        current.length > 0
+    ){
+        novelPages.push(
+            current
+        );
+    }
+    document.body.removeChild(
+        measure
+    );
+
+    /*
+       禁則処理
+    */
     novelPages =
-        applyKinsoku(novelPages);
+        applyKinsoku(
+            novelPages
+        );
 }
 /* =========================================
    禁則処理
