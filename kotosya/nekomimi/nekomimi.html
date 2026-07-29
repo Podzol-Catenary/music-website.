@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Viewer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Viewer</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 
-    <!-- PDF.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.min.js"></script>
 </head>
 <body>
 
-<div id="toolbar">
-    <button id="prev">◀ 前へ</button>
+<header>
 
-    <span id="pageInfo">
-        <span id="pageNum">1</span> /
-        <span id="pageCount">?</span>
-    </span>
+<button id="prev">◀</button>
 
-    <button id="next">次へ ▶</button>
+<span id="pageText">
+<span id="pageNum">1</span> /
+<span id="pageCount">1</span>
+</span>
 
-    <div class="spacer"></div>
+<button id="next">▶</button>
 
-    <button id="zoomOut">－</button>
-    <span id="zoomText">100%</span>
-    <button id="zoomIn">＋</button>
-</div>
+<div class="space"></div>
 
-<div id="viewer">
-    <canvas id="pdfCanvas"></canvas>
-</div>
+<button id="zoomOut">－</button>
 
-<script src="script.js"></script>
+<span id="zoomValue">100%</span>
+
+<button id="zoomIn">＋</button>
+
+</header>
+
+<main>
+
+<canvas id="pdfCanvas"></canvas>
+
+</main>
+
+<script type="module" src="script.js"></script>
 
 </body>
 </html>
