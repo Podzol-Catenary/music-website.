@@ -1,475 +1,61 @@
-/* =========================================
-   共通
-========================================= */
-
 *{
-    margin:0;
-    padding:0;
     box-sizing:border-box;
 }
 
-html,
 body{
-
-    width:100%;
-    height:100%;
-
-    overflow:hidden;
-
-    background:#d8d5cf;
-
-    font-family:
-        "Yu Mincho",
-        "Hiragino Mincho ProN",
-        "MS Mincho",
-        serif;
-
+    margin:0;
+    background:#5c5c5c;
+    font-family:sans-serif;
 }
 
-/* =========================================
-   非表示
-========================================= */
+#toolbar{
+    height:60px;
+    background:#2e2e2e;
+    color:white;
 
-.hidden{
+    display:flex;
+    align-items:center;
+    gap:10px;
 
-    display:none !important;
-
+    padding:0 20px;
 }
 
-/* =========================================
-   ビューア
-========================================= */
+#toolbar button{
+    padding:8px 14px;
+    cursor:pointer;
+    border:none;
+    background:#4b4b4b;
+    color:white;
+    border-radius:5px;
+}
+
+#toolbar button:hover{
+    background:#666;
+}
+
+.spacer{
+    flex:1;
+}
 
 #viewer{
 
-    position:relative;
-
-    width:100%;
-    height:100%;
-
     display:flex;
-
     justify-content:center;
-    align-items:center;
+    align-items:flex-start;
 
+    padding:40px;
+
+    overflow:auto;
+
+    height:calc(100vh - 60px);
 }
 
-/* =========================================
-   本
-========================================= */
-
-#book{
-
-    width:96%;
-    height:94%;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-}
-
-/* =========================================
-   表紙・裏表紙
-========================================= */
-
-#cover,
-#backCover {
-    width: min(45vw, 700px);
-    aspect-ratio: 1 / 1.45;
-    background:
-    linear-gradient(
-      135deg,
-      #fff8e7,
-      #fffdf5
-    );
-    color:#000;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    margin:auto;
-    overflow:hidden;
-}
-
-.coverInner{
-
-    text-align:center;
-
-}
-
-#bookTitle{
-
-    font-size:clamp(
-        28px,
-        4vw,
-        48px
-    );
-
-    margin-bottom:clamp(
-        16px,
-        2vw,
-        24px
-    );
-
-    letter-spacing:.25em;
-
-}
-
-
-#subTitle{
-
-    font-size:clamp(
-        16px,
-        2vw,
-        24px
-    );
-
-    font-weight:normal;
-
-    margin-bottom:clamp(
-        40px,
-        6vw,
-        80px
-    );
-
-}
-
-
-#author{
-
-    font-size:clamp(
-        15px,
-        1.8vw,
-        22px
-    );
-
-    margin-bottom:clamp(
-        30px,
-        5vw,
-        60px
-    );
-
-}
-
-
-#startButton{
-
-    padding:
-
-        clamp(
-            10px,
-            1.5vw,
-            14px
-        )
-
-        clamp(
-            28px,
-            4vw,
-            42px
-        );
-
-
-    font-size:clamp(
-        14px,
-        1.5vw,
-        18px
-    );
-
-
-    cursor:pointer;
-
-    border:2px solid #999;
+canvas{
 
     background:white;
 
-    transition:.2s;
+    box-shadow:
+        0 0 20px rgba(0,0,0,.4);
 
-}
-
-
-#startButton:hover{
-
-    background:#efefef;
-
-}
-
-/* =========================================
-   見開き
-========================================= */
-
-#pages {
-
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    align-items:center;
-    gap:20px;
-
-}
-
-/* =========================================
-   ページ
-========================================= */
-
-.page {
-
-    width: min(48vw, 700px);
-    aspect-ratio: 1 / 1.45;
-    background:#fff;
-    color:#000;
-    overflow:hidden;
-    position:relative;
-
-}
-
-/* =========================================
-   本文
-========================================= */
-.pageContent {
-
-    width:100%;
-    height:100%;
-
-    writing-mode:vertical-rl;
-    text-orientation:mixed;
-
-    font-family:
-        "Yu Mincho",
-        "Hiragino Mincho ProN",
-        serif;
-
-    color:#000;
-
-    font-size:clamp(
-        16px,
-        1.3vw,
-        22px
-    );
-
-    line-height:2;
-
-    padding:6%;
-
-    box-sizing:border-box;
-
-    overflow:visible;
-
-    white-space:pre-wrap;
-
-}
-/* =========================================
-   ページ番号
-========================================= */
-
-.pageNumber{
-    position:absolute;
-    bottom:12px;
-    left:50%;
-    transform:translateX(-50%);
-    font-size:14px;
-    color:#888;
-
-}
-
-/* =========================================
-   左右の矢印
-========================================= */
-
-.arrow{
-
-    position:fixed;
-
-    top:50%;
-    transform:translateY(-50%);
-
-    width:72px;
-    height:100vh;
-
-    border:none;
-    outline:none;
-
-    background:transparent;
-
-    color:rgba(0,0,0,.18);
-
-    font-size:42px;
-
-    cursor:pointer;
-
-    transition:
-        background .2s,
-        color .2s;
-
-    z-index:100;
-}
-
-.arrow:hover{
-    background:rgba(255,255,255,.12);
-    color:rgba(0,0,0,.45);
-}
-.arrow.left{
-    left:0;
-}
-.arrow.right{
-    right:0;
-}
-
-/* =========================================
-   ページ選択禁止
-========================================= */
-
-.pageContent,
-.cover{
-
-    user-select:none;
-    -webkit-user-select:none;
-}
-
-/* =========================================
-   ボタン共通
-========================================= */
-
-button{
-    font-family:inherit;
-}
-
-/* =========================================
-   リンク（将来用）
-========================================= */
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-
-/* =========================================
-   読書位置バー
-========================================= */
-
-#progressBar{
-
-    position:fixed;
-
-    bottom:18px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:35%;
-
-    height:3px;
-
-    background:#ddd;
-
-    border-radius:3px;
-
-    overflow:hidden;
-
-    z-index:200;
-
-}
-
-
-#progress{
-
-    width:10px;
-
-    height:10px;
-
-    border-radius:50%;
-
-    background:#8b7d6b;
-
-}
-
-/* =========================================
-   スマートフォン
-========================================= */
-
-@media screen and (max-width:900px){
-
-    #book{
-        width:100%;
-        height:100%;
-    }
-
-
-    #pages{
-        width:100%;
-        height:100%;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        gap:0;
-    }
-
-    #leftPage{
-        display:none;
-    }
-
-    #rightPage{
-        width:96%;
-        height:98%;
-    }
-
-   .cover{
-    width:96%;
-    height:auto;
-    aspect-ratio:1 / 1.45;
-    }
-
-    .pageContent{
-
-        font-size:clamp(
-            16px,
-            4vw,
-            20px
-        );
-
-        line-height:2;
-
-        padding:
-            clamp(18px,5vw,34px)
-            clamp(14px,4vw,26px);
-
-    }
-}
-
-/* =========================================
-   横向きスマホ
-========================================= */
-
-@media screen and (max-height:600px){
-
-    .pageContent{
-        font-size:clamp(
-            14px,
-            3vw,
-            18px
-        );
-    }
-
-    .cover{
-        height:94%;
-    }
-}
-
-/* =========================================
-   ダークモード対応（OS設定）
-========================================= */
-
-@media (prefers-color-scheme: dark){
-
-    body{
-        background:#2b2b2b;
-    }
-    .page{
-        background:#f8f6f1;
-    }
-    .cover{
-        background:#f3f1eb;
-    }
+    margin-bottom:40px;
 }
