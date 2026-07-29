@@ -1,185 +1,39 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 
-    <title>Novel Viewer</title>
-
-    <link
-        rel="stylesheet"
-        href="style.css">
-
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.min.js"></script>
 </head>
-
 <body>
 
-<!-- ==========================
-      本全体
-========================== -->
+<div id="toolbar">
+    <button id="prev">◀ 前へ</button>
+
+    <span id="pageInfo">
+        <span id="pageNum">1</span> /
+        <span id="pageCount">?</span>
+    </span>
+
+    <button id="next">次へ ▶</button>
+
+    <div class="spacer"></div>
+
+    <button id="zoomOut">－</button>
+    <span id="zoomText">100%</span>
+    <button id="zoomIn">＋</button>
+</div>
 
 <div id="viewer">
-
-    <!-- 左矢印 -->
-
-    <button
-        id="prevButton"
-        class="arrow left"
-        aria-label="前のページ">
-
-        ❮
-
-    </button>
-
-    <!-- 本 -->
-
-    <div id="book">
-
-        <!-- =====================
-              表紙
-        ====================== -->
-
-        <section
-            id="cover"
-            class="cover">
-
-            <div class="coverInner">
-
-                <h3 id="bookTitle">
-
-                    猫耳少女にまつわる<br>幾つかの不思議な物語
-
-                </h3>
-
-                <p id="author">
-
-                   Podzol
-
-                </p>
-
-                <button
-                    id="startButton">
-
-                    読み始める
-
-                </button>
-
-            </div>
-
-        </section>
-
-<!-- =====================
-              本文
-====================== -->
-
-<section
-   id="pages"
-   class="hidden">
-
-<!-- 左ページ（次ページ側） -->
-
-<article
-    class="page"
-    id="leftPage">
-
-    <div
-        class="pageNumber"
-        id="leftNumber">
-
-    </div>
-
-    <div
-        class="pageContent"
-        id="leftContent">
-
-    </div>
-
-</article>
-
-
-<!-- 右ページ（現在ページ側） -->
-
-<article
-    class="page"
-    id="rightPage">
-
-    <div
-        class="pageNumber"
-        id="rightNumber">
-
-    </div>
-
-    <div
-        class="pageContent"
-        id="rightContent">
-
-    </div>
-
-</article>
-
-</section>
-
-<!-- =====================
-              裏表紙
-====================== -->
-
-        <section
-            id="backCover"
-            class="cover hidden">
-
-            <div class="coverInner">
-
-                <h3>
-
-                    猫耳少女にまつわる<br>幾つかの不思議な物語
-
-                </h3>
-
-                <p>
-
-                    Podzol / 人間の証明
-
-                </p>
-
-            </div>
-
-        </section>
-
-    </div>
-
-    <!-- 右矢印 -->
-
-    <button
-        id="nextButton"
-        class="arrow right"
-        aria-label="次のページ">
-
-        ❯
-
-    </button>
-
+    <canvas id="pdfCanvas"></canvas>
 </div>
-
-<!-- 読書位置 -->
-<div id="progressBar">
-    <div id="progress"></div>
-</div>
-
-
-<!-- ==========================
-      JavaScript
-========================== -->
-
-<script src="pages.js"></script>
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
-
