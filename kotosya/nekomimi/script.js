@@ -1,111 +1,88 @@
+import * as pdfjsLib from "https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.54/build/pdf.min.mjs";
+
 pdfjsLib.GlobalWorkerOptions.workerSrc =
-'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.worker.min.js';
+"https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.54/build/pdf.worker.min.mjs";
 
-const url = "sample.pdf";
+const PDF_FILE = "./sample.pdf";
 
-let pdfDoc = null;
-let pageNum = 1;
+let pdf = null;
+let currentPage = 1;
 let scale = 1;
 
 const canvas = document.getElementById("pdfCanvas");
 const ctx = canvas.getContext("2d");
 
-function fitToScreen(page){
+async function render(){
 
-    const viewport = page.getViewport({scale:1});
+    const page = await pdf.getPage(currentPage);
 
-    const availableWidth =
-        window.innerWidth * 0.8;
+    const baseViewport = page.getViewport({scale:1});
 
-    scale = availableWidth / viewport.width;
+    const maxWidth = window.innerWidth * 0.8;
 
-    if(scale > 2){
-        scale = 2;
-    }
+    const autoScale = maxWidth / baseViewport.width;
 
-    renderPage(pageNum);
-}
+    const viewport = page.getViewport({
 
-function renderPage(num){
+        scale:autoScale * scale
 
-    pdfDoc.getPage(num).then(function(page){
-
-        const viewport =
-            page.getViewport({scale});
-
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-
-        page.render({
-            canvasContext:ctx,
-            viewport:viewport
-        });
-
-        document.getElementById("pageNum").textContent=num;
-        document.getElementById("zoomText").textContent=
-            Math.round(scale*100)+"%";
-    });
-}
-
-pdfjsLib.getDocument(url).promise.then(function(pdf){
-
-    pdfDoc = pdf;
-
-    document.getElementById("pageCount").textContent=
-        pdf.numPages;
-
-    pdf.getPage(1).then(function(page){
-        fitToScreen(page);
     });
 
-});
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
 
-document.getElementById("next").onclick=function(){
+    await page.render({
 
-    if(pageNum>=pdfDoc.numPages) return;
+        canvasContext:ctx,
+        viewport
 
-    pageNum++;
+    }).promise;
 
-    renderPage(pageNum);
+    document.getElementById("pageNum").textContent=currentPage;
+    document.getElementById("pageCount").textContent=pdf.numPages;
+    document.getElementById("zoomValue").textContent=
+        Math.round(autoScale*scale*100)+"%";
+}
+
+pdf = await pdfjsLib.getDocument(PDF_FILE).promise;
+
+await render();
+
+document.getElementById("next").onclick=async()=>{
+
+    if(currentPage>=pdf.numPages)return;
+
+    currentPage++;
+
+    await render();
 
 };
 
-document.getElementById("prev").onclick=function(){
+document.getElementById("prev").onclick=async()=>{
 
-    if(pageNum<=1) return;
+    if(currentPage<=1)return;
 
-    pageNum--;
+    currentPage--;
 
-    renderPage(pageNum);
+    await render();
 
 };
 
-document.getElementById("zoomIn").onclick=function(){
+document.getElementById("zoomIn").onclick=async()=>{
 
     scale+=0.1;
 
-    renderPage(pageNum);
+    await render();
 
 };
 
-document.getElementById("zoomOut").onclick=function(){
+document.getElementById("zoomOut").onclick=async()=>{
 
-    if(scale<=0.2) return;
+    scale=Math.max(0.3,scale-0.1);
 
-    scale-=0.1;
-
-    renderPage(pageNum);
+    await render();
 
 };
 
-window.addEventListener("resize",function(){
-
-    pdfDoc.getPage(pageNum).then(function(page){
-
-        fitToScreen(page);
-
-    });
-
-});
-
+window.onresize=render;
 
