@@ -59,9 +59,9 @@ await render();
 
 // 左ボタン = 次ページ（日本語縦書き）
 
-document.getElementById("prev").onclick=async()=>{
+document.getElementById("pageNext").onclick = async()=>{
 
-    if(currentPage>=pdf.numPages)return;
+    if(currentPage >= pdf.numPages)return;
 
     currentPage++;
 
@@ -72,9 +72,9 @@ document.getElementById("prev").onclick=async()=>{
 
 // 右ボタン = 前ページ
 
-document.getElementById("next").onclick=async()=>{
+document.getElementById("pagePrev").onclick = async()=>{
 
-    if(currentPage<=1)return;
+    if(currentPage <= 1)return;
 
     currentPage--;
 
