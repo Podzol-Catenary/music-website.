@@ -62,7 +62,11 @@ async function render() {
         Math.round(autoScale*scale*100)+"%";
 }
 
-pdf = await pdfjsLib.getDocument(PDF_FILE).promise;
+pdf = await pdfjsLib.getDocument({
+    url: PDF_FILE,
+    cMapUrl: "https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.54/cmaps/",
+    cMapPacked: true,
+}).promise;
 
 await render();
 
