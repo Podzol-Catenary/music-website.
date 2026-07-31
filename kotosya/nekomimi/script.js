@@ -3,7 +3,7 @@ import * as pdfjsLib from "https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.54/build/
 pdfjsLib.GlobalWorkerOptions.workerSrc =
 "https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.54/build/pdf.worker.min.mjs";
 
-const PDF_FILE = "./sample.pdf";
+const PDF_FILE = "sample.pdf";
 
 let pdf = null;
 let currentPage = 1;
