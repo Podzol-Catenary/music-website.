@@ -80,3 +80,58 @@ canvas{
 
     margin-bottom:30px;
 }
+
+.pageButton{
+
+    position:fixed;
+
+    top:60px;
+
+    bottom:0;
+
+    width:80px;
+
+    border:none;
+
+    background:rgba(0,0,0,0.08);
+
+    color:white;
+
+    font-size:40px;
+
+    opacity:0.4;
+
+    transition:.2s;
+
+    z-index:10;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+.pageButton:hover{
+
+    background:rgba(0,0,0,0.35);
+
+    opacity:1;
+
+}
+
+
+.pageButton.left{
+
+    left:0;
+
+}
+
+
+.pageButton.right{
+
+    right:0;
+
+}
