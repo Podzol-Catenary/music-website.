@@ -32,7 +32,19 @@ async function render() {
 
     console.log("page loaded");
 
-    ...
+    const baseViewport = page.getViewport({ scale: 1 });
+
+    const maxWidth = window.innerWidth * 0.8;
+    const autoScale = maxWidth / baseViewport.width;
+
+    const viewport = page.getViewport({
+        scale: autoScale * scale
+    });
+
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+
+    console.log(canvas.width, canvas.height);
 
     await page.render({
         canvasContext: ctx,
@@ -40,26 +52,11 @@ async function render() {
     }).promise;
 
     console.log("render finished");
-}
-        
-        scale:autoScale * scale
 
-    });
-
-    canvas.width = viewport.width;
-    canvas.height = viewport.height;
-
-    await page.render({
-
-        canvasContext:ctx,
-        viewport
-
-    }).promise;
-
-    document.getElementById("pageNum").textContent=currentPage;
-    document.getElementById("pageCount").textContent=pdf.numPages;
-    document.getElementById("zoomValue").textContent=
-        Math.round(autoScale*scale*100)+"%";
+    document.getElementById("pageNum").textContent = currentPage;
+    document.getElementById("pageCount").textContent = pdf.numPages;
+    document.getElementById("zoomValue").textContent =
+        Math.round(autoScale * scale * 100) + "%";
 }
 
 pdf = await pdfjsLib.getDocument({
