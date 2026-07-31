@@ -28,15 +28,28 @@ async function render() {
         scale: autoScale * scale
     });
 
-    canvas.width = viewport.width;
-    canvas.height = viewport.height;
+    
+const outputScale = window.devicePixelRatio || 1;
+
+canvas.width = Math.floor(viewport.width * outputScale);
+canvas.height = Math.floor(viewport.height * outputScale);
+
+canvas.style.width = viewport.width + "px";
+canvas.style.height = viewport.height + "px";
+    
 
     console.log(canvas.width, canvas.height);
 
-    await page.render({
-        canvasContext: ctx,
-        viewport
-    }).promise;
+await page.render({
+
+    canvasContext: ctx,
+    viewport: viewport,
+    transform: [
+        outputScale, 0,
+        0, outputScale,
+        0, 0
+    ]
+}).promise;
 
     console.log("render finished");
 
