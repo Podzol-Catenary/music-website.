@@ -57,17 +57,31 @@ console.log(pdf.numPages);
 
 await render();
 
-document.getElementById("next").onclick = async () => {
-    if (currentPage >= pdf.numPages) return;
+// 左ボタン = 次ページ（日本語縦書き）
+
+document.getElementById("prev").onclick=async()=>{
+
+    if(currentPage>=pdf.numPages)return;
+
     currentPage++;
+
     await render();
+
 };
 
-document.getElementById("prev").onclick = async () => {
-    if (currentPage <= 1) return;
+
+// 右ボタン = 前ページ
+
+document.getElementById("next").onclick=async()=>{
+
+    if(currentPage<=1)return;
+
     currentPage--;
+
     await render();
+
 };
+
 
 document.getElementById("zoomIn").onclick = async () => {
     scale += 0.1;
