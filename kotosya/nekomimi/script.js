@@ -24,6 +24,24 @@ async function render(){
 
     const viewport = page.getViewport({
 
+async function render() {
+
+    console.log("render start");
+
+    const page = await pdf.getPage(currentPage);
+
+    console.log("page loaded");
+
+    ...
+
+    await page.render({
+        canvasContext: ctx,
+        viewport
+    }).promise;
+
+    console.log("render finished");
+}
+        
         scale:autoScale * scale
 
     });
