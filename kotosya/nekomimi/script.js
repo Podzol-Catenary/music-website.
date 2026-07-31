@@ -93,4 +93,30 @@ document.getElementById("zoomOut").onclick = async () => {
     await render();
 };
 
+document.addEventListener("keydown", async (e)=>{
+
+    if(
+        e.key === "ArrowLeft" ||
+        e.key === "PageDown" ||
+        e.key === " "
+    ){
+
+        if(currentPage < pdf.numPages){
+            currentPage++;
+            await render();
+        }
+    }
+
+    if(
+        e.key === "ArrowRight" ||
+        e.key === "PageUp"
+    ){
+
+        if(currentPage > 1){
+            currentPage--;
+            await render();
+        }
+    }
+});
+
 window.onresize = render;
