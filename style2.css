@@ -1,3 +1,10 @@
+@charset "utf-8";
+
+
+/* ==================================================
+   基本設定
+================================================== */
+
 :root {
     --bg: #f4f3f0;
     --text: #222;
@@ -9,375 +16,34 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
     padding: 30px 0 70px;
+
     background: var(--bg);
     color: var(--text);
+
     font-family:
         "Hiragino Sans",
         "Yu Gothic",
         sans-serif;
+
+    overflow-x: hidden;
 }
 
-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px 80px;
-}
-
-.page-title {
-    text-align: center;
-    margin: 100px 0 50px;
-    font-size: 28px;
-    font-weight: 400;
-    letter-spacing: .12em;
-}
-
-.gallery-wrapper {
-    width: 100%;
-    max-width: 1050px;
-    margin: 0 auto;
-}
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 55px 35px;
-}
-
-.item {
-    text-align: center;
-    background: transparent;
-    padding: 0;
-    box-shadow: none;
-    border-radius: 0;
-}
-
-.item img {
-    width: 100%;
-    display: block;
-    border-radius: 0;
-    transition: opacity .3s ease;
-}
-
-.item:hover img {
-    opacity: .7;
-}
-
-.caption {
-    margin-top: 12px;
-    font-size: 13px;
-    line-height: 1.8;
-    color: var(--subtext);
-}
-
-.link-button {
-    display: inline-block;
-    padding: 9px 18px;
-    border: 1px solid #999;
-    color: #333;
-    background: transparent;
-    border-radius: 0;
-    font-size: 13px;
-    transition: all .25s ease;
-}
-
-.link-button:hover {
-    background: #333;
-    color: #fff;
-}
-
-.line {
-    border: 0;
-    border-top: 1px solid var(--line);
-    margin: 20px 0;
-}
-
-.content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 70px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.image-area img {
-    width: 100%;
-    display: block;
-}
-
-.title {
-    margin: 0 0 15px;
-    font-size: 30px;
-    font-weight: 400;
-}
-
-.description {
-    font-size: 14px;
-    line-height: 1.9;
-    color: #555;
-}
-
-audio {
-    width: 100%;
-    margin-top: 30px;
-}
-
-.container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
-}
-
-.container img {
-    width: 100%;
-    display: block;
-}
-
-@media (max-width: 768px) {
-
-    section {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    .page-title {
-        font-size: 21px;
-        margin-top: 70px;
-    }
-
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 35px 15px;
-    }
-
-    .content {
-        grid-template-columns: 1fr;
-        gap: 35px;
-    }
-
-    .title {
-        font-size: 24px;
-    }
-
-    .container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* =========================
-   共通セクション
-========================= */
-
-.section {
-    border-top: 1px solid var(--line);
-    margin-top: 80px;
-    padding-top: 10px;
-}
-
-.hero {
-    max-width: 1200px;
-    margin: 0 auto 40px;
-    padding: 0 40px;
-}
-
-.hero img {
-    width: 100%;
-    height: auto;
-    display: block;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 
-/* =========================
+/* ==================================================
    HEADER
-========================= */
-
-.site-header {
-    padding: 20px 0 40px;
-}
-
-.header-inner {
-    text-align: center;
-}
-
-.logo {
-    margin: 0;
-}
-
-.logo img {
-    max-width: 100%;
-    height: auto;
-}
-
-
-/* =========================
-   NEW RELEASE
-========================= */
-
-.artist-name {
-    margin: 0 0 8px;
-    font-size: 14px;
-    color: var(--subtext);
-    letter-spacing: .05em;
-}
-
-.date {
-    font-size: 12px;
-    color: #888;
-    letter-spacing: .08em;
-}
-
-.sub-title {
-    margin: 0 0 20px;
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: .08em;
-}
-
-.release-links {
-    margin-top: 25px;
-}
-
-
-/* =========================
-   SECTION LINK
-========================= */
-
-.section-link {
-    text-align: center;
-    margin-top: 60px;
-}
-
-
-/* =========================
-   PHOTOGRAPHY
-========================= */
-
-.section-intro {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.section-lead {
-    margin-bottom: 25px;
-    font-size: 18px;
-}
-
-
-/* =========================
-   BIO
-========================= */
-
-.bio-content {
-    max-width: 700px;
-    margin: 0 auto;
-    font-size: 14px;
-    line-height: 2;
-    color: #444;
-}
-
-.participation {
-    margin-top: 35px;
-}
-
-
-/* =========================
-   SNS / STORE / LINKS
-========================= */
-
-.small-section {
-    text-align: center;
-}
-
-.link-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-}
-
-
-/* =========================
-   NEWS
-========================= */
-
-.news-list {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 13px;
-    line-height: 2;
-    color: #555;
-}
-
-.news-list p {
-    margin: 0 0 8px;
-}
-
-
-/* =========================
-   CONTACT
-========================= */
-
-.contact {
-    text-align: center;
-}
-
-.contact p {
-    font-size: 14px;
-    line-height: 2;
-    color: #555;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-.site-footer {
-    max-width: 1200px;
-    margin: 60px auto 0;
-    padding: 30px 40px;
-    border-top: 1px solid var(--line);
-    text-align: center;
-    color: #888;
-    font-size: 11px;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 768px) {
-
-    .hero {
-        padding: 0 20px;
-    }
-
-    .site-header {
-        padding-bottom: 25px;
-    }
-
-    .section {
-        margin-top: 60px;
-    }
-
-    .bio-content,
-    .news-list {
-        width: 90%;
-    }
-
-    .site-footer {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-}
-
-/* =========================
-   HEADER NAVIGATION
-========================= */
+================================================== */
 
 .site-header {
     padding: 20px 0 40px;
@@ -397,25 +63,25 @@ audio {
 .logo img {
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
 
-/* ナビゲーション */
+/* ==================================================
+   HEADER NAVIGATION
+================================================== */
 
 .main-nav {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 6px;
+    gap: 5px;
 }
-
-
-/* ナビゲーションボタン */
 
 .nav-button {
     display: inline-block;
 
-    padding: 7px 14px;
+    padding: 6px 12px;
 
     border: 1px solid #aaa;
 
@@ -425,15 +91,10 @@ audio {
     font-size: 13px;
     letter-spacing: .05em;
 
-    text-decoration: none;
-
     transition:
         background-color .25s ease,
         color .25s ease;
 }
-
-
-/* マウスを乗せたとき */
 
 .nav-button:hover {
     background: #333;
@@ -441,12 +102,411 @@ audio {
 }
 
 
-/* スマホ */
+/* ==================================================
+   MAIN VISUAL
+================================================== */
+
+.hero {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto 40px;
+    padding: 0 40px;
+}
+
+.hero img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+
+    display: block;
+}
+
+
+/* ==================================================
+   共通セクション
+================================================== */
+
+.section {
+    max-width: 1200px;
+
+    margin: 80px auto 0;
+
+    padding:
+        10px 40px 80px;
+
+    border-top: 1px solid var(--line);
+}
+
+
+/* ==================================================
+   PAGE TITLE
+================================================== */
+
+.page-title {
+    text-align: center;
+
+    margin: 80px 0 50px;
+
+    font-size: 28px;
+    font-weight: 400;
+
+    letter-spacing: .12em;
+}
+
+.page-title span {
+    font-size: .8em;
+    letter-spacing: .05em;
+}
+
+
+/* ==================================================
+   NEW RELEASE
+================================================== */
+
+.content {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 70px;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+}
+
+.image-area img {
+    width: 100%;
+    height: auto;
+
+    display: block;
+}
+
+.artist-name {
+    margin: 0 0 8px;
+
+    font-size: 14px;
+
+    color: var(--subtext);
+
+    letter-spacing: .05em;
+}
+
+.title {
+    margin: 0 0 15px;
+
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.date {
+    font-size: 12px;
+
+    color: #888;
+
+    letter-spacing: .08em;
+}
+
+.sub-title {
+    margin: 0 0 20px;
+
+    font-size: 16px;
+    font-weight: 400;
+
+    letter-spacing: .08em;
+}
+
+.description {
+    font-size: 14px;
+
+    line-height: 1.9;
+
+    color: #555;
+}
+
+.description p {
+    margin: 0 0 15px;
+}
+
+audio {
+    width: 100%;
+
+    margin-top: 15px;
+}
+
+.release-links {
+    margin-top: 25px;
+}
+
+
+/* ==================================================
+   GALLERY
+================================================== */
+
+.gallery-wrapper {
+    width: 100%;
+    max-width: 1050px;
+
+    margin: 0 auto;
+}
+
+.gallery {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 55px 35px;
+}
+
+.item {
+    text-align: center;
+
+    background: transparent;
+
+    padding: 0;
+
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.item img {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    border-radius: 0;
+
+    transition:
+        opacity .3s ease;
+}
+
+.item:hover img {
+    opacity: .7;
+}
+
+.caption {
+    margin-top: 12px;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    color: var(--subtext);
+}
+
+
+/* ==================================================
+   BUTTON
+================================================== */
+
+.link-button {
+    display: inline-block;
+
+    padding: 9px 18px;
+
+    border: 1px solid #999;
+
+    background: transparent;
+
+    color: #333;
+
+    border-radius: 0;
+
+    font-size: 13px;
+
+    letter-spacing: .02em;
+
+    transition:
+        background-color .25s ease,
+        color .25s ease;
+}
+
+.link-button:hover {
+    background: #333;
+    color: #fff;
+}
+
+.section-link {
+    text-align: center;
+
+    margin-top: 60px;
+}
+
+
+/* ==================================================
+   LINE
+================================================== */
+
+.line {
+    border: 0;
+
+    border-top:
+        1px solid var(--line);
+
+    margin: 20px 0;
+}
+
+
+/* ==================================================
+   PHOTOGRAPHY
+================================================== */
+
+.section-intro {
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+.section-lead {
+    margin-bottom: 25px;
+
+    font-size: 18px;
+}
+
+.container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 4px;
+
+    width: 100%;
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+
+    display: block;
+}
+
+
+/* ==================================================
+   BIO
+================================================== */
+
+.bio-content {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    font-size: 14px;
+
+    line-height: 2;
+
+    color: #444;
+}
+
+.bio-content p {
+    margin: 0 0 20px;
+}
+
+.participation {
+    margin-top: 35px;
+}
+
+
+/* ==================================================
+   SNS / STORE / LINKS
+================================================== */
+
+.small-section {
+    text-align: center;
+}
+
+.link-group {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+
+/* ==================================================
+   NEWS
+================================================== */
+
+.news-list {
+    max-width: 800px;
+
+    margin: 0 auto;
+
+    font-size: 13px;
+
+    line-height: 2;
+
+    color: #555;
+}
+
+.news-list p {
+    margin: 0 0 8px;
+}
+
+
+/* ==================================================
+   CONTACT
+================================================== */
+
+.contact {
+    text-align: center;
+}
+
+.contact p {
+    font-size: 14px;
+
+    line-height: 2;
+
+    color: #555;
+}
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+.site-footer {
+    max-width: 1200px;
+
+    margin: 60px auto 0;
+
+    padding: 30px 40px;
+
+    border-top:
+        1px solid var(--line);
+
+    text-align: center;
+
+    color: #888;
+
+    font-size: 11px;
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
 
 @media (max-width: 768px) {
 
+    body {
+        padding-top: 15px;
+    }
+
+
+    /* HEADER */
+
     .site-header {
-        padding: 15px 0 30px;
+        padding:
+            15px 0 30px;
     }
 
     .header-inner {
@@ -457,13 +517,103 @@ audio {
         margin-bottom: 18px;
     }
 
+
+    /* NAV */
+
     .main-nav {
         gap: 5px;
     }
 
     .nav-button {
-        padding: 7px 12px;
+        padding:
+            7px 12px;
+
         font-size: 12px;
     }
 
+
+    /* HERO */
+
+    .hero {
+        width: 100%;
+
+        padding:
+            0 15px;
+
+        margin-bottom: 30px;
+    }
+
+
+    /* SECTION */
+
+    .section {
+        width: 100%;
+
+        margin-top: 60px;
+
+        padding:
+            10px 20px 60px;
+    }
+
+
+    /* TITLE */
+
+    .page-title {
+        margin:
+            60px 0 35px;
+
+        font-size: 21px;
+    }
+
+
+    /* NEW RELEASE */
+
+    .content {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+        width: 100%;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+
+    /* GALLERY */
+
+    .gallery {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            35px 15px;
+    }
+
+
+    /* PHOTO */
+
+    .container {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    /* BIO / NEWS */
+
+    .bio-content,
+    .news-list {
+        width: 90%;
+    }
+
+
+    /* FOOTER */
+
+    .site-footer {
+        padding:
+            30px 20px;
+    }
+
 }
+
