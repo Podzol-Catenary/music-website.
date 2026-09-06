@@ -177,16 +177,13 @@ audio {
 }
 
 .hero {
-    width: 100%;
     max-width: 1200px;
     margin: 0 auto 40px;
     padding: 0 40px;
-    box-sizing: border-box;
 }
 
 .hero img {
     width: 100%;
-    max-width: 100%;
     height: auto;
     display: block;
 }
@@ -355,11 +352,8 @@ audio {
 @media (max-width: 768px) {
 
     .hero {
-        width: 100%;
-        padding: 0 15px;
-        margin-bottom: 30px;
+        padding: 0 20px;
     }
-
 
     .site-header {
         padding-bottom: 25px;
@@ -381,22 +375,95 @@ audio {
 
 }
 
+/* =========================
+   HEADER NAVIGATION
+========================= */
+
+.site-header {
+    padding: 20px 0 40px;
+}
+
+.header-inner {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    margin: 0 0 20px;
+    text-align: left;
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* ナビゲーション */
+
 .main-nav {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 3px;
+    gap: 6px;
 }
+
+
+/* ナビゲーションボタン */
 
 .nav-button {
-    padding: 3px 0;
-    border: none;
+    display: inline-block;
+
+    padding: 7px 14px;
+
+    border: 1px solid #aaa;
+
     background: transparent;
     color: #333;
+
     font-size: 13px;
+    letter-spacing: .05em;
+
+    text-decoration: none;
+
+    transition:
+        background-color .25s ease,
+        color .25s ease;
 }
 
+
+/* マウスを乗せたとき */
+
 .nav-button:hover {
-    background: transparent;
-    color: #888;
+    background: #333;
+    color: #fff;
+}
+
+
+/* スマホ */
+
+@media (max-width: 768px) {
+
+    .site-header {
+        padding: 15px 0 30px;
+    }
+
+    .header-inner {
+        width: 90%;
+    }
+
+    .logo {
+        margin-bottom: 18px;
+    }
+
+    .main-nav {
+        gap: 5px;
+    }
+
+    .nav-button {
+        padding: 7px 12px;
+        font-size: 12px;
+    }
+
 }
