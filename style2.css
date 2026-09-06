@@ -73,17 +73,25 @@ a {
 
 .main-nav {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 25px;
 }
 
 .nav-button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    padding: 6px 12px;
+    min-height: 44px;
+    padding: 0 22px;
 
-    border: 1px solid #aaa;
+    border: 1px solid #999;
 
     background: transparent;
     color: #333;
@@ -100,6 +108,7 @@ a {
     background: #333;
     color: #fff;
 }
+
 
 
 /* ==================================================
@@ -305,21 +314,22 @@ audio {
 ================================================== */
 
 .link-button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    padding: 9px 18px;
+    min-height: 46px;
+    padding: 0 28px;
 
     border: 1px solid #999;
 
     background: transparent;
-
     color: #333;
 
     border-radius: 0;
 
     font-size: 13px;
-
-    letter-spacing: .02em;
+    letter-spacing: .04em;
 
     transition:
         background-color .25s ease,
@@ -330,13 +340,6 @@ audio {
     background: #333;
     color: #fff;
 }
-
-.section-link {
-    text-align: center;
-
-    margin-top: 60px;
-}
-
 
 /* ==================================================
    LINE
@@ -501,12 +504,10 @@ audio {
         padding-top: 15px;
     }
 
-
-    /* HEADER */
+  /* HEADER */
 
     .site-header {
-        padding:
-            15px 0 30px;
+        padding: 15px 0 30px;
     }
 
     .header-inner {
@@ -521,25 +522,37 @@ audio {
     /* NAV */
 
     .main-nav {
-        gap: 5px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+
+        margin-top: 20px;
     }
 
     .nav-button {
-        padding:
-            7px 12px;
+        width: 100%;
+        min-height: 44px;
+
+        padding: 0 15px;
 
         font-size: 12px;
     }
+
+
+      /* BUTTON */
+
+    .link-button {
+        min-height: 44px;
+        padding: 0 22px;
+    }
+
 
 
     /* HERO */
 
     .hero {
         width: 100%;
-
-        padding:
-            0 15px;
-
+        padding: 0 15px;
         margin-bottom: 30px;
     }
 
@@ -548,20 +561,15 @@ audio {
 
     .section {
         width: 100%;
-
         margin-top: 60px;
-
-        padding:
-            10px 20px 60px;
+        padding: 10px 20px 60px;
     }
 
 
     /* TITLE */
 
     .page-title {
-        margin:
-            60px 0 35px;
-
+        margin: 60px 0 35px;
         font-size: 21px;
     }
 
@@ -570,9 +578,7 @@ audio {
 
     .content {
         grid-template-columns: 1fr;
-
         gap: 35px;
-
         width: 100%;
     }
 
@@ -584,19 +590,15 @@ audio {
     /* GALLERY */
 
     .gallery {
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap:
-            35px 15px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px 15px;
     }
 
 
     /* PHOTO */
 
     .container {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
 
@@ -611,9 +613,6 @@ audio {
     /* FOOTER */
 
     .site-footer {
-        padding:
-            30px 20px;
+        padding: 30px 20px;
     }
-
 }
-
