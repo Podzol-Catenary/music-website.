@@ -3,80 +3,253 @@
 <head>
 <meta charset="UTF-8">
 <title>podzol-catenary-picture</title>
- 
- <meta name="viewport" content="width=device-width, initial-scale=1">
- <meta name="description" content="Podzol,街並み記録,日本の古い街並み,Japanese traditional landscape">
- <link rel="stylesheet" href="../../style.css">
- 
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Podzol,街並み記録,日本の古い街並み,Japanese traditional landscape">
+
+<link rel="stylesheet" href="../../style.css">
+
+<style>
+/* 地方ごとのまとまり */
+.region {
+    margin-bottom: 40px;
+}
+
+/* 写真を横並びにする */
+.photo-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* 1県分のカード */
+.photo-card {
+    width: 200px;
+    text-align: center;
+}
+
+/* 写真 */
+.photo-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+    transition: opacity 0.3s;
+}
+
+/* マウスを乗せたとき */
+.photo-card img:hover {
+    opacity: 0.7;
+}
+
+/* 県名 */
+.photo-card p {
+    margin-top: 8px;
+    font-size: 16px;
+}
+</style>
+
 </head>
+
 <body>
 
 <h1>Podzol/街並み記録</h1>
 <h2>都道府県別のページ</h2>
+
 <section>
+
 <hr class="line">
 
+<!-- 北海道地方 -->
+<div class="region">
 <h3>北海道地方</h3>
-<a href="hokkaido.html" class="link-button"> ▶︎北海道</a>
-<br>
+
+<div class="photo-list">
+
+<a href="hokkaido.html" class="photo-card">
+    <img src="images/hokkaido.jpg" alt="北海道の街並み">
+    <p>北海道</p>
+</a>
+
+</div>
+</div>
+
+
 <hr class="line">
 
+<!-- 東北地方 -->
+<div class="region">
 <h3>東北地方</h3>
-<a href="akita.html" class="link-button"> ▶︎秋田県</a>
-<br>
+
+<div class="photo-list">
+
+<a href="akita.html" class="photo-card">
+    <img src="images/akita.jpg" alt="秋田県の街並み">
+    <p>秋田県</p>
+</a>
+
+</div>
+</div>
+
+
 <hr class="line">
 
+<!-- 関東地方 -->
+<div class="region">
 <h3>関東地方</h3>
-<a href="tokyo.html" class="link-button"> ▶︎東京都</a> 
-<br>
+
+<div class="photo-list">
+
+<a href="tokyo.html" class="photo-card">
+    <img src="images/tokyo.jpg" alt="東京都の街並み">
+    <p>東京都</p>
+</a>
+
+</div>
+</div>
+
+
 <hr class="line">
 
+<!-- 中部地方 -->
+<div class="region">
 <h3>中部地方</h3>
-<a href="aichi.html" class="link-button"> ▶︎愛知県</a> <br>
-<a href="gihu.html" class="link-button"> ▶︎岐阜県</a> <br>
-<br>
+
+<div class="photo-list">
+
+<a href="aichi.html" class="photo-card">
+    <img src="images/aichi.jpg" alt="愛知県の街並み">
+    <p>愛知県</p>
+</a>
+
+<a href="gihu.html" class="photo-card">
+    <img src="images/gifu.jpg" alt="岐阜県の街並み">
+    <p>岐阜県</p>
+</a>
+
+</div>
+</div>
+
+
 <hr class="line">
 
+<!-- 近畿地方 -->
+<div class="region">
 <h3>近畿地方</h3>
-<a href="hyogo.html" class="link-button"> ▶︎兵庫県</a> <br>
-<br>
+
+<div class="photo-list">
+
+<a href="hyogo.html" class="photo-card">
+    <img src="images/hyogo.jpg" alt="兵庫県の街並み">
+    <p>兵庫県</p>
+</a>
+
+</div>
+</div>
+
+
 <hr class="line">
 
+<!-- 山陰地方 -->
+<div class="region">
 <h3>山陰地方</h3>
-<a href="shimane.html" class="link-button"> ▶︎島根県</a> <br>
-<br>
+
+<div class="photo-list">
+
+<a href="shimane.html" class="photo-card">
+    <img src="images/shimane.jpg" alt="島根県の街並み">
+    <p>島根県</p>
+</a>
+
+</div>
+</div>
+
+
 <hr class="line">
 
+<!-- 中国地方 -->
+<div class="region">
 <h3>中国地方</h3>
-<a href="hiroshima.html" class="link-button"> ▶︎広島県</a> <br>
-<a href="okayama.html" class="link-button"> ▶︎岡山県</a> <br>
-<br>
+
+<div class="photo-list">
+
+<a href="hiroshima.html" class="photo-card">
+    <img src="images/hiroshima.jpg" alt="広島県の街並み">
+    <p>広島県</p>
+</a>
+
+<a href="okayama.html" class="photo-card">
+    <img src="images/okayama.jpg" alt="岡山県の街並み">
+    <p>岡山県</p>
+</a>
+
+</div>
+</div>
+
+
 <hr class="line">
 
+<!-- 四国地方 -->
+<div class="region">
 <h3>四国地方</h3>
-<a href="kagawa.html" class="link-button"> ▶︎香川県</a> <br>
-<a href="ehime.html" class="link-button"> ▶︎愛媛県</a> <br>
-<a href="kouchi.html" class="link-button"> ▶︎高知県</a> <br>
-<br>
+
+<div class="photo-list">
+
+<a href="kagawa.html" class="photo-card">
+    <img src="images/kagawa.jpg" alt="香川県の街並み">
+    <p>香川県</p>
+</a>
+
+<a href="ehime.html" class="photo-card">
+    <img src="images/ehime.jpg" alt="愛媛県の街並み">
+    <p>愛媛県</p>
+</a>
+
+<a href="kouchi.html" class="photo-card">
+    <img src="images/kouchi.jpg" alt="高知県の街並み">
+    <p>高知県</p>
+</a>
+
+</div>
+</div>
+
+
 <hr class="line">
 
+<!-- 九州地方 -->
+<div class="region">
 <h3>九州地方</h3>
-<p>-準備中-</p><br>
+<p>-準備中-</p>
+</div>
+
 <hr class="line">
 
 </section>
 
+
 <section>
 <h2>Film</h2>
+
 <h4>
-<a href="https://podzol-catenary.github.io/music-website./machinami/film/film.html" class="link-button"> ▶︎Film写真</a>
+<a href="https://podzol-catenary.github.io/music-website./machinami/film/film.html"
+   class="link-button">
+   ▶︎Film写真
+</a>
 </h4>
- </section>
+
+</section>
+
 
 <hr class="line">
+
 <p>
-<a href="https://podzol-catenary.github.io/music-website./index.html" class="link-button"> ▶︎戻る</a>
+<a href="https://podzol-catenary.github.io/music-website./index.html"
+   class="link-button">
+   ▶︎戻る
+</a>
 </p>
+
 <hr class="line">
 <br>
 
