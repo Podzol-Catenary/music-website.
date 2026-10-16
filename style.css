@@ -218,13 +218,14 @@ a:active {
 
 @media (max-width: 600px) {
   .box {
-    flex-direction: column; /* 縦並び */
-    text-align: flex-start;
-  .first-line {
-  font-size: 24px;
-  font-weight: bold;
+    flex-direction: column;
+    text-align: left;
   }
- }
+
+  .first-line {
+    font-size: 24px;
+    font-weight: bold;
+  }
 }
 
 .FlexContainer {
