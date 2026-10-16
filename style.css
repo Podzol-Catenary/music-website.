@@ -86,14 +86,13 @@
 
 /* スマホ対応 */
 @media screen and (max-width: 768px) {
-
     .gallery {
-        grid-template-columns: 2fr;
+        grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .gallery-wrapper {
-        width: 30%;
+        width: 90%;
     }
 
     .page-title {
